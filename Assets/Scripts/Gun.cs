@@ -29,4 +29,28 @@ public class Gun : MonoBehaviour
     {
         magAmmo = magCapacity;
     }
+
+    public void Fire()  // PlayerShooter에서 Gun에 발사를 위한 함수
+    {
+        if (magAmmo >= 1)
+        {
+            Shot();
+        }
+    }
+
+    private void Shot() // 실제로 발사처리를 하는 함수
+    {
+        // Raycast처리로 적 체력 감소처리
+        magAmmo--;
+    }
+
+    public void Reload() // 재장전 함수
+    {
+
+    }
+
+    private void ReloadAmmo() // 실제 재장전 함수
+    {
+        magAmmo = magCapacity;
+    }
 }
