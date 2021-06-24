@@ -33,6 +33,8 @@ public class GameStage : MonoBehaviour
     int score;
     [SerializeField]
     float clearTime;
+    [SerializeField]
+    CinemachineVirtualCamera virtualCamera;
 
     Queue<EnemyGroup> readyEnemyGroups;
     EnemyGroup currGroup;
@@ -54,6 +56,7 @@ public class GameStage : MonoBehaviour
         eventTimer = 0.0f;
         isStart = false;
         aliveEnemys = new List<Enemy>();
+        virtualCamera.LookAt = transform;
     }
 
     // Update is called once per frame
@@ -63,11 +66,11 @@ public class GameStage : MonoBehaviour
         {
             if (aliveEnemys.Count == 0)
             {
-                cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
+                virtualCamera.LookAt = transform;
             }
             else
             {
-                cinemachineBrain.ActiveVirtualCamera.LookAt = aliveEnemys[0].transform;
+                virtualCamera.LookAt = aliveEnemys[0].transform;
             }
 
             if (currGroup.enemyDatas.Count == 0)
@@ -82,7 +85,8 @@ public class GameStage : MonoBehaviour
                         // 다음 그룹이 없다
                         // 스테이지 종료
                         dollyCart.enabled = true;
-                        cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
+                        virtualCamera.Priority = 0;
+                        //cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
                         isStart = false;
                     }
                 }
@@ -112,10 +116,10 @@ public class GameStage : MonoBehaviour
         dollyCart = other.GetComponent<CinemachineDollyCart>();
         if (dollyCart)
         {
-            cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
+            //cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             //cinemachineBrain.ActiveVirtualCamera.Follow = null;
             dollyCart.enabled = false;
-
+            virtualCamera.Priority = 20;
             readyEnemyGroups = new Queue<EnemyGroup>(enemyGroups);
             isStart = NextEnemyGroup();
             clearTime = 0;
