@@ -44,6 +44,10 @@ public class GameStage : MonoBehaviour
     CinemachineDollyCart dollyCart;
     CinemachineBrain cinemachineBrain;
 
+    [Header("스테이지 버츄얼 카메라")]
+    [SerializeField]
+    CinemachineVirtualCamera stageCamera;
+
     float eventTimer;
     private bool isStart;
 
@@ -81,6 +85,7 @@ public class GameStage : MonoBehaviour
                     {
                         // 다음 그룹이 없다
                         // 스테이지 종료
+                        stageCamera.Priority = 0;
                         dollyCart.enabled = true;
                         cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
                         isStart = false;
@@ -115,7 +120,7 @@ public class GameStage : MonoBehaviour
             cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             //cinemachineBrain.ActiveVirtualCamera.Follow = null;
             dollyCart.enabled = false;
-
+            stageCamera.Priority = 10;
             readyEnemyGroups = new Queue<EnemyGroup>(enemyGroups);
             isStart = NextEnemyGroup();
             clearTime = 0;
