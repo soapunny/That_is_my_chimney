@@ -8,6 +8,10 @@ using Cinemachine;
 public struct EnemyData
 {
     [SerializeField]
+    string enemyId;
+    [SerializeField]
+    GameObject enemyObj;
+    [SerializeField]
     EnemyState initState;
     [SerializeField]
     Vector3 spawnPoint;
@@ -20,8 +24,6 @@ public struct EnemyData
 [Serializable]
 public struct EnemyGroup
 {
-    [SerializeField]
-    string enemyId;
     [SerializeField]
     List<EnemyData> enemyDatas;
 }
