@@ -33,7 +33,6 @@ public class GameStage : MonoBehaviour
     [SerializeField]
     List<EnemyGroup> enemyGroups;
     CinemachineDollyCart dollyCart;
-
     // Start is called before the first frame update
     void Start()
     {
