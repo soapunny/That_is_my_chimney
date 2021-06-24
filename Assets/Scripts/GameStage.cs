@@ -33,16 +33,19 @@ public class GameStage : MonoBehaviour
     [SerializeField]
     List<EnemyGroup> enemyGroups;
     CinemachineDollyCart dollyCart;
+    private float cameraTimer;
+    private bool isStart;
     // Start is called before the first frame update
     void Start()
     {
-        
+        cameraTimer = 0.0f;
+        isStart = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        CameraTimer();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,6 +55,21 @@ public class GameStage : MonoBehaviour
         {
             //
             dollyCart.enabled = false;
+            isStart = true;
+        }
+    }
+
+    private void CameraTimer()
+    {
+        if(isStart)
+        {
+            cameraTimer += Time.deltaTime;
+            if(cameraTimer >= 3.0f)
+            {
+                cameraTimer = 0.0f;
+                isStart = false;
+                dollyCart.enabled = true;
+            }
         }
     }
 }
