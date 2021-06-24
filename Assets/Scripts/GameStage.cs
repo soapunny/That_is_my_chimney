@@ -50,6 +50,8 @@ public class GameStage : MonoBehaviour
     [SerializeField]
     List<EnemyGroup> enemyGroups;
     CinemachineDollyCart dollyCart;
+    private float cameraTimer;
+    private bool isStart;
     CinemachineBrain cinemachineBrain;
 
     delegate void killScore(Enemy enemy);
@@ -60,6 +62,8 @@ public class GameStage : MonoBehaviour
     void Start()
     {
         cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
+        cameraTimer = 0.0f;
+        isStart = false;
     }
 
     // Update is called once per frame
