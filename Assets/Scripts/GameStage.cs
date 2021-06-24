@@ -41,7 +41,6 @@ public class GameStage : MonoBehaviour
     [SerializeField]
     float clearTime;
 
-    float eventTimer;
     Queue<EnemyGroup> readyEnemyGroups;
     EnemyGroup currGroup;
     List<Enemy> enemys;
@@ -50,26 +49,25 @@ public class GameStage : MonoBehaviour
     [SerializeField]
     List<EnemyGroup> enemyGroups;
     CinemachineDollyCart dollyCart;
-    private float cameraTimer;
-    private bool isStart;
     CinemachineBrain cinemachineBrain;
 
     delegate void killScore(Enemy enemy);
 
-    public bool IsPlay { get; set;}
+    float eventTimer;
+    private bool isStart;
 
     // Start is called before the first frame update
     void Start()
     {
         cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
-        cameraTimer = 0.0f;
+        eventTimer = 0.0f;
         isStart = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsPlay)
+        if (isStart)
         {
             eventTimer += Time.deltaTime;
 
@@ -77,7 +75,7 @@ public class GameStage : MonoBehaviour
             {
                 dollyCart.enabled = true;
                 cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
-                IsPlay = false;
+                isStart = false;
             }
         }
     }
@@ -97,7 +95,7 @@ public class GameStage : MonoBehaviour
             score = 0;
             clearTime = 0;
 
-            IsPlay = true;
+            isStart = true;
         }
     }
 }
