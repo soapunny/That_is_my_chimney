@@ -26,25 +26,27 @@ public struct EnemyGroup
 [RequireComponent(typeof(BoxCollider))]
 public class GameStage : MonoBehaviour
 {
-    [Header("½ºÅ×ÀÌÁö Å¬¸®¾îÁ¤º¸")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField]
     string name;
     [SerializeField]
     int score;
     [SerializeField]
     float clearTime;
+    [SerializeField]
+    CinemachineVirtualCamera virtualCamera;
 
     Queue<EnemyGroup> readyEnemyGroups;
     EnemyGroup currGroup;
     List<Enemy> aliveEnemys;
 
-    [Header("½ºÅ×ÀÌÁö Àû ½ºÆùÁ¤º¸")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField]
     List<EnemyGroup> enemyGroups;
     CinemachineDollyCart dollyCart;
     CinemachineBrain cinemachineBrain;
 
-    [Header("½ºÅ×ÀÌÁö ¹öÃò¾ó Ä«¸Þ¶ó")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½")]
     [SerializeField]
     CinemachineVirtualCamera stageCamera;
 
@@ -58,6 +60,7 @@ public class GameStage : MonoBehaviour
         eventTimer = 0.0f;
         isStart = false;
         aliveEnemys = new List<Enemy>();
+        virtualCamera.LookAt = transform;
     }
 
     // Update is called once per frame
@@ -67,27 +70,28 @@ public class GameStage : MonoBehaviour
         {
             if (aliveEnemys.Count == 0)
             {
-                cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
+                virtualCamera.LookAt = transform;
             }
             else
             {
-                cinemachineBrain.ActiveVirtualCamera.LookAt = aliveEnemys[0].transform;
+                virtualCamera.LookAt = aliveEnemys[0].transform;
             }
 
             if (currGroup.enemyDatas.Count == 0)
             {
-                // ÇöÀç ±×·ìÀÇ ³²Àº ´ë±â¿­ÀÌ ´Ù ½ºÆùµÇ¾ú´Ù.
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½â¿­ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½.
                 if (aliveEnemys.Count == 0)
                 {
-                    // ³²¾ÆÀÖ´Â ÀûÀÌ ¾ø´Ù
-                    // ´ÙÀ½ ±×·ì ½ÇÇà
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                    // ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ ï¿½ï¿½ï¿½ï¿½
                     if (!NextEnemyGroup())
                     {
-                        // ´ÙÀ½ ±×·ìÀÌ ¾ø´Ù
-                        // ½ºÅ×ÀÌÁö Á¾·á
+                        // ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                         stageCamera.Priority = 0;
                         dollyCart.enabled = true;
-                        cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
+                        virtualCamera.Priority = 0;
+                        //cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
                         isStart = false;
                     }
                 }
@@ -117,10 +121,10 @@ public class GameStage : MonoBehaviour
         dollyCart = other.GetComponent<CinemachineDollyCart>();
         if (dollyCart)
         {
-            cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
+            //cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             //cinemachineBrain.ActiveVirtualCamera.Follow = null;
             dollyCart.enabled = false;
-            stageCamera.Priority = 10;
+            virtualCamera.Priority = 20;
             readyEnemyGroups = new Queue<EnemyGroup>(enemyGroups);
             isStart = NextEnemyGroup();
             clearTime = 0;

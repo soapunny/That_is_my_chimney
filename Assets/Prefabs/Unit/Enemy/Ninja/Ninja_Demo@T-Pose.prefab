@@ -101,6 +101,7 @@ MonoBehaviour:
   state: 0
   attackSpeed: 0
   hp: 1
+  highlightPrefab: {fileID: 2447328758599538288, guid: 7761ce66ce0d91e4e98843f213bce7b3, type: 3}
 --- !u!136 &2950020601873997359
 CapsuleCollider:
   m_ObjectHideFlags: 0
