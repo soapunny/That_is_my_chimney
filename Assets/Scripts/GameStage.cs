@@ -72,6 +72,7 @@ public class GameStage : MonoBehaviour
             if (eventTimer > 3.0f)
             {
                 dollyCart.enabled = true;
+                cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
                 IsPlay = false;
             }
         }
