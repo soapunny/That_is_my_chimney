@@ -7,27 +7,20 @@ using Cinemachine;
 [Serializable]
 public struct EnemyData
 {
-    [SerializeField]
-    float spawnTime;
-    [SerializeField]
-    string enemyId;
-    [SerializeField]
-    GameObject enemyObj;
-    [SerializeField]
-    EnemyState initState;
-    [SerializeField]
-    Vector3 spawnPoint;
-    [SerializeField]
-    Vector3 movePoint;
-    [SerializeField]
-    float attackSpeed;
+    public float spawnTime;
+    public string enemyId;
+    public GameObject enemyObj;
+    public EnemyState initState;
+    public Vector3 spawnPoint;
+    public Vector3 movePoint;
+    public float attackSpeed;
 }
 
 [Serializable]
 public struct EnemyGroup
 {
     [SerializeField]
-    List<EnemyData> enemyDatas;
+    public List<EnemyData> enemyDatas;
 }
 
 [RequireComponent(typeof(BoxCollider))]
@@ -43,15 +36,13 @@ public class GameStage : MonoBehaviour
 
     Queue<EnemyGroup> readyEnemyGroups;
     EnemyGroup currGroup;
-    List<Enemy> enemys;
+    List<Enemy> aliveEnemys;
 
     [Header("스테이지 적 스폰정보")]
     [SerializeField]
     List<EnemyGroup> enemyGroups;
     CinemachineDollyCart dollyCart;
     CinemachineBrain cinemachineBrain;
-
-    delegate void killScore(Enemy enemy);
 
     float eventTimer;
     private bool isStart;
@@ -62,6 +53,7 @@ public class GameStage : MonoBehaviour
         cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
         eventTimer = 0.0f;
         isStart = false;
+        aliveEnemys = new List<Enemy>();
     }
 
     // Update is called once per frame
@@ -69,14 +61,49 @@ public class GameStage : MonoBehaviour
     {
         if (isStart)
         {
-            eventTimer += Time.deltaTime;
-
-            if (eventTimer > 3.0f)
+            if (aliveEnemys.Count == 0)
             {
-                dollyCart.enabled = true;
-                cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
-                isStart = false;
+                cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             }
+            else
+            {
+                cinemachineBrain.ActiveVirtualCamera.LookAt = aliveEnemys[0].transform;
+            }
+
+            if (currGroup.enemyDatas.Count == 0)
+            {
+                // 현재 그룹의 남은 대기열이 다 스폰되었다.
+                if (aliveEnemys.Count == 0)
+                {
+                    // 남아있는 적이 없다
+                    // 다음 그룹 실행
+                    if (!NextEnemyGroup())
+                    {
+                        // 다음 그룹이 없다
+                        // 스테이지 종료
+                        dollyCart.enabled = true;
+                        cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
+                        isStart = false;
+                    }
+                }
+            }
+            else
+            {
+                while (currGroup.enemyDatas.Count != 0 && eventTimer > currGroup.enemyDatas[0].spawnTime)
+                {
+                    Enemy enemy = Instantiate(currGroup.enemyDatas[0].enemyObj, currGroup.enemyDatas[0].spawnPoint, Quaternion.identity).GetComponent<Enemy>();
+                    enemy.transform.LookAt(dollyCart.transform);
+                    enemy.state = currGroup.enemyDatas[0].initState;
+                    enemy.attackSpeed = currGroup.enemyDatas[0].attackSpeed;
+                    enemy.onDeathCallback = new Enemy.OnDeathCallback(KillEnemy);
+                    aliveEnemys.Add(enemy);
+
+                    currGroup.enemyDatas.RemoveAt(0);
+                }
+            }
+
+            eventTimer += Time.deltaTime;
+            clearTime += Time.deltaTime;
         }
     }
 
@@ -85,17 +112,35 @@ public class GameStage : MonoBehaviour
         dollyCart = other.GetComponent<CinemachineDollyCart>();
         if (dollyCart)
         {
-            //
             cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             //cinemachineBrain.ActiveVirtualCamera.Follow = null;
             dollyCart.enabled = false;
 
             readyEnemyGroups = new Queue<EnemyGroup>(enemyGroups);
-            eventTimer = 0f;
-            score = 0;
+            isStart = NextEnemyGroup();
             clearTime = 0;
-
-            isStart = true;
+            score = 0;
         }
+    }
+
+    public void KillEnemy(Enemy enemy)
+    {
+        score += 5;
+        aliveEnemys.Remove(enemy);
+    }
+
+    bool NextEnemyGroup()
+    {
+        aliveEnemys = new List<Enemy>();
+        eventTimer = 0f;
+
+        if (readyEnemyGroups.Count == 0)
+        {
+            currGroup = new EnemyGroup();
+            return false;
+        }
+
+        currGroup = readyEnemyGroups.Dequeue();
+        return true;
     }
 }

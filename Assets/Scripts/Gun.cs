@@ -13,9 +13,18 @@ public class Gun : MonoBehaviour
     public int gunDamage = 1;   // 총 데미지
     public int magCapacity = 6; // 탄창 용량
     public int magAmmo;         // 현재 탄창
+
+    public List<LayerMask> hitMasks;
+    int hitMask;
+
     // Start is called before the first frame update
     void Start()
     {
+        hitMask = 0;
+        foreach (var mask in hitMasks)
+        {
+            hitMask += mask.value;
+        }
         gunAudioPlayer = GetComponent<AudioSource>();
     }
 
@@ -41,7 +50,18 @@ public class Gun : MonoBehaviour
     private void Shot() // 실제로 발사처리를 하는 함수
     {
         // Raycast처리로 적 체력 감소처리
-        magAmmo--;
+
+        //magAmmo--;
+        RaycastHit hitInfo;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, hitMask))
+        {
+            IHitable hitable = hitInfo.collider.GetComponent<IHitable>();
+            if (hitable != null)
+            {
+                hitable.Hit();
+            }
+        }
     }
 
     public void Reload() // 재장전 함수

@@ -7,28 +7,46 @@ public enum EnemyState
     Idle,
     Move,
     Sit,
-    Attack
+    Attack,
+    Death
 }
 
-public class Enemy : MonoBehaviour
+public interface IHitable
 {
+    abstract void Hit();
+}
 
-    [SerializeField]
-    EnemyState state;
-    [SerializeField]
-    float attackSpeed;
+public class Enemy : MonoBehaviour, IHitable
+{
+    public delegate void OnDeathCallback(Enemy enemy);
+
+    public EnemyState state;
+    public float attackSpeed;
     [SerializeField]
     int hp;
+
+    public OnDeathCallback onDeathCallback;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public void Hit()
+    {
+        Death();
+    }
+
+    void Death()
+    {
+        state = EnemyState.Death;
+        onDeathCallback(this);
+        Destroy(gameObject, 1.0f);
     }
 }
