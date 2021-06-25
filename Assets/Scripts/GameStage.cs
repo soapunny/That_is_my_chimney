@@ -98,6 +98,7 @@ public class GameStage : MonoBehaviour
                     Enemy enemy = Instantiate(currGroup.enemyDatas[0].enemyObj, currGroup.enemyDatas[0].spawnPoint, Quaternion.identity).GetComponent<Enemy>();
                     enemy.transform.LookAt(dollyCart.transform);
                     enemy.state = currGroup.enemyDatas[0].initState;
+                    enemy.destPosition = currGroup.enemyDatas[0].movePoint;
                     enemy.attackSpeed = currGroup.enemyDatas[0].attackSpeed;
                     enemy.onDeathCallback = new Enemy.OnDeathCallback(KillEnemy);
                     aliveEnemys.Add(enemy);

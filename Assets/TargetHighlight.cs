@@ -32,6 +32,6 @@ public class TargetHighlight : MonoBehaviour
         outerCircle.color = Color.Lerp(fromOuterColor, toOuterColor, elapsedTime);
         innerCircle.color = Color.Lerp(fromInnerColor, toInnerColor, elapsedTime);
         innerCircle.transform.Rotate(new Vector3(0.0f, 0.0f, 360 * Time.deltaTime));
-        elapsedTime += Time.deltaTime * 0.1f;
+        elapsedTime += Time.deltaTime;
     }
 }
