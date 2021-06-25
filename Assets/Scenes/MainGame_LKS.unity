@@ -28900,7 +28900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cde8e82f2d8a234f90a27102216949a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Stage4
+  name: Stage1
   score: 0
   clearTime: 0
   virtualCamera: {fileID: 1104648981}
@@ -28909,26 +28909,26 @@ MonoBehaviour:
     - spawnTime: 1.3
       enemyId: Ninja
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
-      initState: 0
+      initState: 2
       spawnPoint: {x: 32.163, y: -0.1, z: -57.793}
       movePoint: {x: 0, y: 0, z: 0}
-      attackSpeed: 0
+      attackSpeed: 2
   - enemyDatas:
     - spawnTime: 0.5
       enemyId: Ninja
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
-      initState: 0
+      initState: 2
       spawnPoint: {x: 30.833, y: -0.4, z: -54.663}
       movePoint: {x: 0, y: 0, z: 0}
-      attackSpeed: 0
+      attackSpeed: 2
   - enemyDatas:
     - spawnTime: 2
       enemyId: Ninja
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
-      initState: 0
+      initState: 2
       spawnPoint: {x: 28.382, y: -0.131, z: -59.535}
       movePoint: {x: 0, y: 0, z: 0}
-      attackSpeed: 0
+      attackSpeed: 2
 --- !u!65 &729509181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51818,7 +51818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cde8e82f2d8a234f90a27102216949a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Stage4
+  name: Stage2
   score: 0
   clearTime: 0
   virtualCamera: {fileID: 648309247}
@@ -51827,7 +51827,7 @@ MonoBehaviour:
     - spawnTime: 1.3
       enemyId: Ninja
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
-      initState: 0
+      initState: 2
       spawnPoint: {x: 10.29, y: 1.77, z: -50.78}
       movePoint: {x: 0, y: 0, z: 0}
       attackSpeed: 0
@@ -66823,7 +66823,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095857268}
-  m_LocalRotation: {x: 1e-45, y: 0.84633434, z: -3e-45, w: 0.53265214}
+  m_LocalRotation: {x: -1e-45, y: 0.84633434, z: 1e-45, w: 0.53265214}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
