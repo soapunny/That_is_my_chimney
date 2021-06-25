@@ -26,7 +26,7 @@ public struct EnemyGroup
 [RequireComponent(typeof(BoxCollider))]
 public class GameStage : MonoBehaviour
 {
-    [Header("�������� Ŭ��������")]
+    [Header("스테이지 정보")]
     [SerializeField]
     string name;
     [SerializeField]
@@ -40,15 +40,11 @@ public class GameStage : MonoBehaviour
     EnemyGroup currGroup;
     List<Enemy> aliveEnemys;
 
-    [Header("�������� �� ��������")]
+    [Header("생존한 적 정보")]
     [SerializeField]
     List<EnemyGroup> enemyGroups;
     CinemachineDollyCart dollyCart;
     CinemachineBrain cinemachineBrain;
-
-    [Header("�������� ����� ī�޶�")]
-    [SerializeField]
-    CinemachineVirtualCamera stageCamera;
 
     float eventTimer;
     private bool isStart;
@@ -79,16 +75,11 @@ public class GameStage : MonoBehaviour
 
             if (currGroup.enemyDatas.Count == 0)
             {
-                // ���� �׷��� ���� ��⿭�� �� �����Ǿ���.
+                // 생존한 적의 수가 0일경우 진행
                 if (aliveEnemys.Count == 0)
                 {
-                    // �����ִ� ���� ����
-                    // ���� �׷� ����
                     if (!NextEnemyGroup())
                     {
-                        // ���� �׷��� ����
-                        // �������� ����
-                        stageCamera.Priority = 0;
                         dollyCart.enabled = true;
                         virtualCamera.Priority = 0;
                         //cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
