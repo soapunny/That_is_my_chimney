@@ -13,10 +13,13 @@ public class GameManager : MonoBehaviour
     List<GameObject> bulletImage;
     [SerializeField]
     List<GameObject> hpImage;
+    [SerializeField]
+    GameObject crossHair;
     // Start is called before the first frame update
 
     private void Awake()
     {
+        Cursor.visible = false;
         if(gameManager == null)
         {
             gameManager = this;
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        CrossHairUpdate();
     }
 
     public void EraseBulletImage(int arrayNum)
@@ -55,5 +58,10 @@ public class GameManager : MonoBehaviour
     public void PlusHpImage(int currHp)
     {
         hpImage[currHp].SetActive(true);
+    }
+
+    public void CrossHairUpdate()
+    {
+        crossHair.transform.position = Input.mousePosition;
     }
 }
