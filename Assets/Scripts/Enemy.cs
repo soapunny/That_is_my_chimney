@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour, IHitable
     Transform highlightTransform;
     float attackTimer;
     Animator animator;
-    Rigidbody rigidBody;
+    //Rigidbody rigidBody;
     NavMeshAgent nav;
 
     // Start is called before the first frame update
@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour, IHitable
         highlight.transform.SetParent(FindObjectOfType<Canvas>().transform);
         highlightTransform = highlight.GetComponent<Transform>();
         animator = GetComponent<Animator>();
-        rigidBody = GetComponent<Rigidbody>();
+        //rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         if (state == EnemyState.Move || state == EnemyState.MoveSit)
 		{
@@ -86,8 +86,10 @@ public class Enemy : MonoBehaviour, IHitable
 		{
             //nav.ResetPath();
             state = EnemyState.Idle;
+            Vector3 dir = (Camera.main.transform.position - transform.position).normalized;
+            nav.SetDestination(transform.position + dir * 0.001f);
             //animator.SetBool("FinishMove", true);
-            rigidBody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
+            //rigidBody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
         }
     }
 
