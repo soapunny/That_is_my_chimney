@@ -28,11 +28,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(movingCamara)
-        //{
-        //  Vector3 leadPos = new Vector3(movingCamara.GetComponent<Transform>().position.x-1, movingCamara.GetComponent<Transform>().position.y, movingCamara.GetComponent<Transform>().position.z-1);
-        //  transform.position=Vector3.MoveTowards(transform.position, leadPos, Time.deltaTime*10);
-        //}
+
         //if(dollyCart.enabled == true)
         //   transform.position = new Vector3 (cart.transform.position.x , transform.position.y , cart.transform.position.z);
 
