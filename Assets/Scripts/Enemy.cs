@@ -71,6 +71,8 @@ public class Enemy : MonoBehaviour, IHitable
 
     void Death()
     {
+        if (state == EnemyState.Death) return;
+
         ninjaAnimator.SetTrigger("Die");
         state = EnemyState.Death;
         onDeathCallback(this);
