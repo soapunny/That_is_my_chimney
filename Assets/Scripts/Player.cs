@@ -19,21 +19,21 @@ public class Player : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         handGun = GetComponent<Gun>();
-        Run();
+        //Run();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(movingCamara)
-        {
-            Vector3 leadPos = new Vector3(movingCamara.GetComponent<Transform>().position.x-1, movingCamara.GetComponent<Transform>().position.y, movingCamara.GetComponent<Transform>().position.z-1);
-            GetComponent<Transform>().position = leadPos;
-        }
-        //if(playerInput.fire)    //fire가 true일 경우 발사
+        //if(movingCamara)
         //{
-        //    handGun.Fire();
+        //    Vector3 leadPos = new Vector3(movingCamara.GetComponent<Transform>().position.x-1, movingCamara.GetComponent<Transform>().position.y, //movingCamara.GetComponent<Transform>().position.z-1);
+        //    GetComponent<Transform>().position = leadPos;
         //}
+        if(playerInput.fire)    //fire가 true일 경우 발사
+        {
+            handGun.Fire();
+        }
     }
     public void Run()
     {
