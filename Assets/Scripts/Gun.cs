@@ -52,10 +52,12 @@ public class Gun : MonoBehaviour
         // Raycast贸府肺 利 眉仿 皑家贸府
 
         //magAmmo--;
+        Debug.Log(11);
         RaycastHit hitInfo;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, hitMask))
         {
+            Debug.Log(hitInfo.collider.gameObject.name);
             IHitable hitable = hitInfo.collider.GetComponent<IHitable>();
             if (hitable != null)
             {

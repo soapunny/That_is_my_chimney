@@ -54,6 +54,8 @@ public class Enemy : MonoBehaviour, IHitable
 
     void Death()
     {
+        if (state == EnemyState.Death)
+            return;
         state = EnemyState.Death;
         onDeathCallback(this);
         Destroy(gameObject, 1.0f);

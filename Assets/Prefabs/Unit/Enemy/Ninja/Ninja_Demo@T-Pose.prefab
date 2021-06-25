@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  attackSpeed: 0
+  attackSpeed: 3
   hp: 1
   highlightPrefab: {fileID: 2447328758599538288, guid: 7761ce66ce0d91e4e98843f213bce7b3, type: 3}
 --- !u!136 &2950020601873997359
@@ -112,7 +112,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}

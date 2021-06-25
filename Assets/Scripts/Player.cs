@@ -13,27 +13,32 @@ public class Player : MonoBehaviour
     private PlayerInput playerInput;
     private bool isRunning = false;
     public Gun handGun;
-
+    public GameObject cart;
+    CinemachineDollyCart dollyCart;
     // Start is called before the first frame update
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
         handGun = GetComponent<Gun>();
+        dollyCart = cart.gameObject.GetComponent<CinemachineDollyCart>();
         Run();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(movingCamara)
-        {
-            Vector3 leadPos = new Vector3(movingCamara.GetComponent<Transform>().position.x-1, movingCamara.GetComponent<Transform>().position.y, movingCamara.GetComponent<Transform>().position.z-1);
-            GetComponent<Transform>().position = leadPos;
-        }
-        //if(playerInput.fire)    //fire가 true일 경우 발사
+        //if(movingCamara)
         //{
-        //    handGun.Fire();
+        //    //Vector3 leadPos = new Vector3(movingCamara.GetComponent<Transform>().position.x-1, movingCamara.GetComponent<Transform>().position.y, movingCamara.GetComponent<Transform>().position.z-1);
+        //    //transform.position=Vector3.MoveTowards(transform.position, leadPos, Time.deltaTime*10);
         //}
+        if(dollyCart.enabled == true)
+            transform.position = new Vector3 (cart.transform.position.x , transform.position.y , cart.transform.position.z);
+
+        if (playerInput.fire)    //fire가 true일 경우 발사
+        {
+            handGun.Fire();
+        }
     }
     public void Run()
     {
