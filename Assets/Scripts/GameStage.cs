@@ -26,7 +26,7 @@ public struct EnemyGroup
 [RequireComponent(typeof(BoxCollider))]
 public class GameStage : MonoBehaviour
 {
-    [Header("½ºÅ×ÀÌÁö Å¬¸®¾îÁ¤º¸")]
+    [Header("ìŠ¤í…Œì´ì§€ ì •ë³´")]
     [SerializeField]
     string name;
     [SerializeField]
@@ -40,7 +40,7 @@ public class GameStage : MonoBehaviour
     EnemyGroup currGroup;
     List<Enemy> aliveEnemys;
 
-    [Header("½ºÅ×ÀÌÁö Àû ½ºÆùÁ¤º¸")]
+    [Header("ìƒì¡´í•œ ì  ì •ë³´")]
     [SerializeField]
     List<EnemyGroup> enemyGroups;
     CinemachineDollyCart dollyCart;
@@ -75,15 +75,11 @@ public class GameStage : MonoBehaviour
 
             if (currGroup.enemyDatas.Count == 0)
             {
-                // ÇöÀç ±×·ìÀÇ ³²Àº ´ë±â¿­ÀÌ ´Ù ½ºÆùµÇ¾ú´Ù.
+                // ìƒì¡´í•œ ì ì˜ ìˆ˜ê°€ 0ì¼ê²½ìš° ì§„í–‰
                 if (aliveEnemys.Count == 0)
                 {
-                    // ³²¾ÆÀÖ´Â ÀûÀÌ ¾ø´Ù
-                    // ´ÙÀ½ ±×·ì ½ÇÇà
                     if (!NextEnemyGroup())
                     {
-                        // ´ÙÀ½ ±×·ìÀÌ ¾ø´Ù
-                        // ½ºÅ×ÀÌÁö Á¾·á
                         dollyCart.enabled = true;
                         virtualCamera.Priority = 0;
                         //cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
