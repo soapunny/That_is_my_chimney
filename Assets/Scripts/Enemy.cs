@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public enum EnemyState
 {
     Idle,
     Move,
+    MoveSit,
     Sit,
     Attack,
     Death
@@ -23,7 +25,8 @@ public class Enemy : MonoBehaviour, IHitable
 
     public EnemyState state;
     public float attackSpeed;
-    private float attackTimer;
+    public Vector3 destPosition;
+
     [SerializeField]
     int hp;
 
@@ -31,36 +34,59 @@ public class Enemy : MonoBehaviour, IHitable
 
     public GameObject highlightPrefab;
     Transform highlightTransform;
-    private Animator ninjaAnimator;
+    float attackTimer;
+    Animator animator;
+    Rigidbody rigidbody;
+    NavMeshAgent nav;
+
     // Start is called before the first frame update
     void Start()
     {
         GameObject highlight = Instantiate(highlightPrefab);
         highlight.transform.SetParent(FindObjectOfType<Canvas>().transform);
         highlightTransform = highlight.GetComponent<Transform>();
-        ninjaAnimator = GetComponent<Animator>();
-        if(state == EnemyState.Sit)
-        {
-            state = EnemyState.Idle;
-            ninjaAnimator.SetBool("IsSit", true);
+        animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+        nav = GetComponent<NavMeshAgent>();
+        if (state == EnemyState.Move || state == EnemyState.MoveSit)
+		{
+            nav.SetDestination(destPosition);
         }
-        else
-        {
-            ninjaAnimator.SetBool("IsSit", false);
-        }
-        attackTimer = 0.0f;
+        attackTimer = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (state == EnemyState.Death) return;
+
         highlightTransform.position = Camera.main.WorldToScreenPoint(transform.position);
         float scale = 120f / Camera.main.fieldOfView;
         highlightTransform.localScale = new Vector3(scale, scale, 1f);
+        if (attackTimer < 0f)
+		{
+            if (state == EnemyState.Sit || state == EnemyState.MoveSit)
+			{
+                state = EnemyState.Idle;
+			}
+            animator.SetTrigger("Attack");
+            attackTimer = 1f;
+        }
 
-        if(state == EnemyState.Idle)
-        {
-            Attack();
+        animator.SetFloat("MoveSpeed", nav.velocity.magnitude);
+        if (state == EnemyState.Sit || state == EnemyState.MoveSit) animator.SetFloat("Sit", 1.0f);
+        else animator.SetFloat("Sit", 0.0f);
+
+        if (state == EnemyState.Idle || state == EnemyState.Sit)
+		{
+            attackTimer -= Time.deltaTime * attackSpeed;
+		}
+
+        if (state != EnemyState.Idle && nav.remainingDistance < 0.01f)
+		{
+            nav.ResetPath();
+            state = EnemyState.Idle;
+            rigidbody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
         }
     }
 
@@ -71,41 +97,10 @@ public class Enemy : MonoBehaviour, IHitable
 
     void Death()
     {
-        if (state == EnemyState.Death) return;
-
-        ninjaAnimator.SetTrigger("Die");
+        highlightTransform.gameObject.SetActive(false);
+        animator.SetTrigger("Death");
         state = EnemyState.Death;
         onDeathCallback(this);
         Destroy(gameObject, 1.0f);
-    }
-
-    void Move()
-    {
-        // 목표좌표에 도착시 상태 변경
-    }
-
-    void Attack()
-    {
-        attackTimer += Time.deltaTime;
-        if (attackTimer >= attackSpeed)
-        {
-            ninjaAnimator.SetBool("DoAttack", true);
-            state = EnemyState.Attack;
-            attackTimer = 0.0f;
-        }
-    }
-
-    void FinishAttack(int num)
-    {
-        if(num == 1)
-        {
-            ninjaAnimator.SetBool("DoAttack", false);
-            state = EnemyState.Idle;
-        }
-    }
-
-    private void OnDestroy()
-    {
-        Destroy(highlightTransform.gameObject);
     }
 }
