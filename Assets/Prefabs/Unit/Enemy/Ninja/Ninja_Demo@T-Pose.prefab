@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6640601484063307330}
   - component: {fileID: 6629734985102269432}
   - component: {fileID: 5213468217654391107}
+  - component: {fileID: -5053170800907741281}
   m_Layer: 7
   m_Name: Ninja_Demo@T-Pose
   m_TagString: Untagged
@@ -124,6 +125,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &-5053170800907741281
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109172321315190402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &278752737343883120
 GameObject:
   m_ObjectHideFlags: 0
