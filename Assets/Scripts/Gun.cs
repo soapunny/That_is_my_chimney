@@ -15,8 +15,8 @@ public class Gun : MonoBehaviour
     public int magAmmo;         // 현재 탄창
 
     public List<LayerMask> hitMasks;
-    int hitMask;
 
+    int hitMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +50,8 @@ public class Gun : MonoBehaviour
     {
         // Raycast처리로 적 체력 감소처리
 
-        //magAmmo--;
+        GameManager.gameManager.EraseBulletImage(magAmmo - 1);
+        magAmmo--;
         RaycastHit hitInfo;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(Camera.main.transform.position, (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f)) - Camera.main.transform.position).normalized, out hitInfo, Mathf.Infinity, hitMask))
@@ -72,5 +73,9 @@ public class Gun : MonoBehaviour
     private void ReloadAmmo() // 실제 재장전 함수
     {
         magAmmo = magCapacity;
+        for(int i = 0; i < magAmmo; i++)
+        {
+            GameManager.gameManager.ReloadBulletImage(i);
+        }
     }
 }
