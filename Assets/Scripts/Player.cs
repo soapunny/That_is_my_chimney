@@ -31,10 +31,7 @@ public class Player : MonoBehaviour
 
         //SetPlayerHp && UI
         playerHp = 3;
-        for(int i = 0; i < playerHp; i++)
-        {
-            GameManager.gameManager.PlusHpImage(i);
-        }
+        GameManager.gameManager.ChangeHpUi(playerHp);
     }
 
     // Update is called once per frame
@@ -77,13 +74,13 @@ public class Player : MonoBehaviour
 
     public void GetDamage()
     {
-        GameManager.gameManager.MinusHpImage(playerHp - 1);
         playerHp--;
+        GameManager.gameManager.ChangeHpUi(playerHp);
     }
 
     public void GetHeal()
     {
-        GameManager.gameManager.MinusHpImage(playerHp);
         playerHp++;
+        GameManager.gameManager.ChangeHpUi(playerHp);
     }
 }
