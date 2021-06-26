@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour, IHitable
     Transform highlightTransform;
     float attackTimer;
     Animator animator;
-    Rigidbody rigidbody;
+    //Rigidbody rigidBody;
     NavMeshAgent nav;
 
     private ObjectPool targetPool;
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour, IHitable
         GameObject highlight = targetHighlight.gameObject;
         highlightTransform = highlight.GetComponent<Transform>();
         animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody>();
+        //rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         if (state == EnemyState.Move || state == EnemyState.MoveSit)
 		{
@@ -96,9 +96,12 @@ public class Enemy : MonoBehaviour, IHitable
 
         if (state != EnemyState.Idle && nav.remainingDistance < 0.01f)
 		{
-            nav.ResetPath();
+            //nav.ResetPath();
             state = EnemyState.Idle;
-            rigidbody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
+            Vector3 dir = (Camera.main.transform.position - transform.position).normalized;
+            nav.SetDestination(transform.position + dir * 0.001f);
+            //animator.SetBool("FinishMove", true);
+            //rigidBody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
         }
     }
 

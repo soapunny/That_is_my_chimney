@@ -15,8 +15,8 @@ public class Gun : MonoBehaviour
     public int magAmmo;         // 현재 탄창
 
     public List<LayerMask> hitMasks;
-    int hitMask;
 
+    int hitMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,6 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnEnable()
@@ -51,11 +50,11 @@ public class Gun : MonoBehaviour
     {
         // Raycast처리로 적 체력 감소처리
 
-        //magAmmo--;
-        Debug.Log(11);
+        GameManager.gameManager.EraseBulletImage(magAmmo - 1);
+        magAmmo--;
         RaycastHit hitInfo;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, hitMask))
+        if (Physics.Raycast(Camera.main.transform.position, (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f)) - Camera.main.transform.position).normalized, out hitInfo, Mathf.Infinity, hitMask))
         {
             Debug.Log(hitInfo.collider.gameObject.name);
             IHitable hitable = hitInfo.collider.GetComponent<IHitable>();
@@ -68,11 +67,15 @@ public class Gun : MonoBehaviour
 
     public void Reload() // 재장전 함수
     {
-
+        ReloadAmmo();
     }
 
     private void ReloadAmmo() // 실제 재장전 함수
     {
         magAmmo = magCapacity;
+        for(int i = 0; i < magAmmo; i++)
+        {
+            GameManager.gameManager.ReloadBulletImage(i);
+        }
     }
 }

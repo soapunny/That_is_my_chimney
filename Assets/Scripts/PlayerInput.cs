@@ -18,7 +18,7 @@ public class PlayerInput : MonoBehaviour
     {
         //게임오버 상태일 때 키값 안받는 예외처리 필요
 
-        fire = Input.GetButton(fireButtonName); // fire 입력 감지
+        fire = Input.GetButtonDown(fireButtonName); // fire 입력 감지
         reload = Input.GetButton(reloadButton); // reload 입력 감지
     }
 }
