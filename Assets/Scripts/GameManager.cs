@@ -16,7 +16,10 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timeText;
+    public TextMeshProUGUI reloadText;
+
     public GameObject gameOver;
+    public GameObject reLoad;
 
     int score;
     float elapsedTime;
@@ -87,5 +90,15 @@ public class GameManager : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void EraseReload()
+    {
+        reLoad.SetActive(false);
+    }
+
+    public void ShowReload()
+    {
+        reLoad.SetActive(true);
     }
 }

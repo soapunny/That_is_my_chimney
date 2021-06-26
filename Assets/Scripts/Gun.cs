@@ -44,6 +44,10 @@ public class Gun : MonoBehaviour
         {
             Shot();
         }
+        else if(magAmmo <= 0)
+        {
+            GameManager.gameManager.ShowReload();
+        }
     }
 
     private void Shot() // 실제로 발사처리를 하는 함수
@@ -72,6 +76,7 @@ public class Gun : MonoBehaviour
 
     private void ReloadAmmo() // 실제 재장전 함수
     {
+        GameManager.gameManager.EraseReload();
         magAmmo = magCapacity;
         GameManager.gameManager.ChangeBulletUi(magAmmo);
     }

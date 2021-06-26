@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
             state = PlayerState.Death;
             EffectManager.Instance.Death();
             GameManager.gameManager.GameOver();
+            GameManager.gameManager.EraseReload();
         }
     }
 
