@@ -128,6 +128,7 @@ public class Enemy : MonoBehaviour, IHitable
     void Release()
     {
         gameObject.SetActive(false);
+        EffectManager.Instance.CreateEffect(EffectType.NinjaDisappear, 1.5f, transform.position);
         ObjectPool.Instance.ReleaseObject(enemyId, gameObject);
     }
 }

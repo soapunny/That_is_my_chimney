@@ -7,7 +7,9 @@ using UnityEngine.Rendering.PostProcessing;
 
 public enum EffectType
 {
-    ShatteredWindow
+    ShatteredWindow,
+    NinjaDisappear,
+    HitEffect
 }
 
 public enum PostEffectType
@@ -133,13 +135,22 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void CreateEffect(EffectType type, float lifeTime)
+    public void CreateEffect(EffectType type, float lifeTime, Vector3 position = new Vector3())
     {
+        GameObject obj;
         switch (type)
         {
             case EffectType.ShatteredWindow:
-                GameObject obj = Instantiate(effectPrefabs[0], UICamera.Instance.transform);
+                obj = Instantiate(effectPrefabs[0], UICamera.Instance.transform);
                 obj.transform.localPosition = new Vector3(Random.Range(-0.4f, 0.4f), Random.Range(-0.1f, 0.1f), Random.Range(0.5f, 1.0f));
+                Destroy(obj, lifeTime);
+                break;
+            case EffectType.NinjaDisappear:
+                obj = Instantiate(effectPrefabs[1], position, Quaternion.identity);
+                Destroy(obj, lifeTime);
+                break;
+            case EffectType.HitEffect:
+                obj = Instantiate(effectPrefabs[2], position, Quaternion.identity);
                 Destroy(obj, lifeTime);
                 break;
         }

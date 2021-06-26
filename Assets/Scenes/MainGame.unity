@@ -13178,7 +13178,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.6e-43, y: 11.291542, z: 8.6e-43, w: 0}
+  m_BoundingSphereOverride: {x: 1.7e-44, y: 0, z: 1, w: 1e-45}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -28016,7 +28016,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648309244}
-  m_LocalRotation: {x: 0.04065722, y: -0.6860314, z: 0.0384498, w: 0.72541684}
+  m_LocalRotation: {x: 0.04065722, y: -0.68603146, z: 0.03844981, w: 0.7254168}
   m_LocalPosition: {x: 18.359955, y: 1.79, z: -50.655273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -50399,6 +50399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectPrefabs:
   - {fileID: 8376352440179010752, guid: 354d971f2de6c4b4c858d85ddc87c7bb, type: 3}
+  - {fileID: 4484688227223578893, guid: 49759bbb80ec435449539dbf9813d3a4, type: 3}
+  - {fileID: 3117695359141323304, guid: 356dcbd0858bcea448e3b04cba834a5f, type: 3}
   profile: {fileID: 0}
   volume: {fileID: 1421925083}
 --- !u!1 &1424143946
@@ -62840,7 +62842,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793816794}
-  m_LocalRotation: {x: -0.008887018, y: -0.39041406, z: -0.0037689104, w: 0.9205888}
+  m_LocalRotation: {x: -0.008887012, y: -0.39041406, z: -0.0037689076, w: 0.9205888}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
