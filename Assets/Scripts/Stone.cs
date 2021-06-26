@@ -47,4 +47,12 @@ public class Stone : MonoBehaviour, IHitable
         int Num = Random.Range(0, 3);
         particle[Num].SetActive(true);
     }
+
+    //카메라 충돌 구현 필요
+    public void PlayerCollision()
+    {
+        stoneDurability = 0;
+        stoneStatus = StoneStatus.Destroy;
+        
+    }
 }
