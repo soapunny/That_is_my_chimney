@@ -86,6 +86,6 @@ public class GameManager : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene("MainGame_PHS");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
