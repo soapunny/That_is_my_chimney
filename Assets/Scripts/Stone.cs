@@ -11,7 +11,8 @@ public enum StoneStatus
 public class Stone : MonoBehaviour, IHitable
 {
     private GameObject stoneObject;
-    public List<GameObject> particle;
+    public GameObject stoneSocket;
+    public GameObject particle;
     public MeshRenderer stoneMeshRenderer;
     public MeshCollider stoneCollider;
     public int stoneDurability;
@@ -54,7 +55,7 @@ public class Stone : MonoBehaviour, IHitable
         stoneMeshRenderer.enabled = false;
         stoneCollider.enabled = false;
         int Num = Random.Range(0, 3);
-        particle[Num].SetActive(true);
+        particle.SetActive(true);
     }
 
     //카메라 충돌 구현 필요
