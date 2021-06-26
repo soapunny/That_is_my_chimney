@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour, IHitable
     Animator animator;
     //Rigidbody rigidBody;
     NavMeshAgent nav;
+    Collider collider;
 
     // Start is called before the first frame update
     private void Awake()
@@ -49,6 +50,7 @@ public class Enemy : MonoBehaviour, IHitable
         nav = GetComponent<NavMeshAgent>();
         attackTimer = 1.0f;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        collider = GetComponent<CapsuleCollider>();
     }
 
     void OnEnable()
@@ -60,7 +62,7 @@ public class Enemy : MonoBehaviour, IHitable
         }
         highlight.gameObject.SetActive(true);
         highlight.limitTime = attackSpeed;
-        Debug.Log(gameObject.name);
+        collider.enabled = true;
     }
 
     // Update is called once per frame
@@ -114,10 +116,18 @@ public class Enemy : MonoBehaviour, IHitable
     {
         if (state == EnemyState.Death) return;
 
+        nav.ResetPath();
+        collider.enabled = false;
         highlight.gameObject.SetActive(false);
         animator.SetTrigger("Death");
         state = EnemyState.Death;
         onDeathCallback(this);
         //Destroy(gameObject, 1.0f);
+    }
+
+    void Release()
+    {
+        gameObject.SetActive(false);
+        ObjectPool.Instance.ReleaseObject(enemyId, gameObject);
     }
 }

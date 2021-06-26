@@ -138,8 +138,8 @@ public class GameStage : MonoBehaviour
     public void KillEnemy(Enemy enemy)
     {
         score += 5;
-        enemy.gameObject.SetActive(false);
-        ObjectPool.Instance.ReleaseObject(enemy.enemyId, enemy.gameObject);
+        //enemy.gameObject.SetActive(false);
+        //ObjectPool.Instance.ReleaseObject(enemy.enemyId, enemy.gameObject);
         aliveEnemys.Remove(enemy);
     }
 
