@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     public Gun handGun;
     public GameObject cart;
     CinemachineDollyCart dollyCart;
-    LineRenderer line;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +24,6 @@ public class Player : MonoBehaviour
 
         dollyCart = cart.gameObject.GetComponent<CinemachineDollyCart>();
         //Run();
-
-        line = Camera.main.GetComponent<LineRenderer>();
-        line.positionCount = 2;
     }
 
     // Update is called once per frame
@@ -42,9 +38,6 @@ public class Player : MonoBehaviour
             handGun.Fire();
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            line.SetPosition(0, ray.origin);
-            line.SetPosition(1, ray.origin + ray.direction * 10);
         }
     }
     public void Run()

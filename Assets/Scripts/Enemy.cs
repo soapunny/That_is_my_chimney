@@ -32,8 +32,8 @@ public class Enemy : MonoBehaviour, IHitable
 
     public OnDeathCallback onDeathCallback;
 
+    public GameObject center;
     public GameObject highlightPrefab;
-    Transform highlightTransform;
     float attackTimer;
     Animator animator;
     //Rigidbody rigidBody;
@@ -43,8 +43,8 @@ public class Enemy : MonoBehaviour, IHitable
     void Start()
     {
         GameObject highlight = Instantiate(highlightPrefab);
-        highlight.transform.SetParent(FindObjectOfType<Canvas>().transform);
-        highlightTransform = highlight.GetComponent<Transform>();
+        highlight.GetComponent<TargetHighlight>().target = center;
+
         animator = GetComponent<Animator>();
         //rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
@@ -60,9 +60,6 @@ public class Enemy : MonoBehaviour, IHitable
     {
         if (state == EnemyState.Death) return;
 
-        highlightTransform.position = Camera.main.WorldToScreenPoint(transform.position);
-        float scale = 120f / Camera.main.fieldOfView;
-        highlightTransform.localScale = new Vector3(scale, scale, 1f);
         if (attackTimer < 0f)
 		{
             if (state == EnemyState.Sit || state == EnemyState.MoveSit)
@@ -87,7 +84,7 @@ public class Enemy : MonoBehaviour, IHitable
             //nav.ResetPath();
             state = EnemyState.Idle;
             Vector3 dir = (Camera.main.transform.position - transform.position).normalized;
-            nav.SetDestination(transform.position + dir * 0.001f);
+            nav.SetDestination(transform.position + dir * 0.1f);
             //animator.SetBool("FinishMove", true);
             //rigidBody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
         }
@@ -98,12 +95,17 @@ public class Enemy : MonoBehaviour, IHitable
         Death();
     }
 
+    void Attack()
+    {
+        EffectManager.Instance.HeartBeat(0.5f);
+        EffectManager.Instance.CreateEffect(EffectType.ShatteredWindow, 1.0f);
+    }
+
     void Death()
     {
         if (state == EnemyState.Death)
             return;
 
-        highlightTransform.gameObject.SetActive(false);
         animator.SetTrigger("Death");
         state = EnemyState.Death;
         onDeathCallback(this);
