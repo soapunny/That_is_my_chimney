@@ -27,12 +27,9 @@ public struct EnemyGroup
 public class GameStage : MonoBehaviour
 {
     [Header("Stage Info")]
-    [SerializeField]
-    string name;
-    [SerializeField]
-    int score;
-    [SerializeField]
-    float clearTime;
+    public string name;
+    public int score;
+    public float clearTime;
     [SerializeField]
     CinemachineVirtualCamera virtualCamera;
 
@@ -57,6 +54,7 @@ public class GameStage : MonoBehaviour
         isStart = false;
         aliveEnemys = new List<Enemy>();
         virtualCamera.LookAt = transform;
+        clearTime = 0.0f;
     }
 
     // Update is called once per frame
@@ -84,6 +82,7 @@ public class GameStage : MonoBehaviour
                         virtualCamera.Priority = 0;
                         //cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
                         isStart = false;
+                        GameManager.gameManager.currStage = null;
                     }
                 }
             }
@@ -124,6 +123,7 @@ public class GameStage : MonoBehaviour
         dollyCart = other.GetComponent<CinemachineDollyCart>();
         if (dollyCart)
         {
+            GameManager.gameManager.currStage = this;
             //cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             //cinemachineBrain.ActiveVirtualCamera.Follow = null;
             dollyCart.enabled = false;
@@ -156,5 +156,10 @@ public class GameStage : MonoBehaviour
 
         currGroup = readyEnemyGroups.Dequeue();
         return true;
+    }
+
+    public void GameOver()
+    {
+        isStart = false;
     }
 }

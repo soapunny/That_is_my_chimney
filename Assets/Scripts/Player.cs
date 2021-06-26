@@ -4,8 +4,16 @@ using UnityEngine;
 using UnityEngine.AI;
 using Cinemachine;
 
+
 public class Player : MonoBehaviour
 {
+    enum PlayerState
+    {
+        Alive,
+        Death
+    }
+
+    PlayerState state;
     [SerializeField]
     CinemachineVirtualCamera movingCamara;
     [SerializeField]
@@ -30,12 +38,13 @@ public class Player : MonoBehaviour
         //SetPlayerHp && UI
         playerHp = 3;
         GameManager.gameManager.ChangeHpUi(playerHp);
+        state = PlayerState.Alive;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (state == PlayerState.Death) return;
         //if(dollyCart.enabled == true)
         //   transform.position = new Vector3 (cart.transform.position.x , transform.position.y , cart.transform.position.z);
 
@@ -71,6 +80,12 @@ public class Player : MonoBehaviour
     {
         playerHp--;
         GameManager.gameManager.ChangeHpUi(playerHp);
+        if (state == PlayerState.Alive && playerHp <= 0)
+        {
+            state = PlayerState.Death;
+            EffectManager.Instance.Death();
+            GameManager.gameManager.GameOver();
+        }
     }
 
     public void GetHeal()

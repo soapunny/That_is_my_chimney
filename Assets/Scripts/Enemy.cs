@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour, IHitable
     public OnDeathCallback onDeathCallback;
 
     public TargetHighlight highlight;
+    public Player target;
 
     float attackTimer;
     Animator animator;
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour, IHitable
         //rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         attackTimer = 1.0f;
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     void OnEnable()
@@ -103,6 +105,7 @@ public class Enemy : MonoBehaviour, IHitable
 
     void Attack()
     {
+        target.GetDamage();
         EffectManager.Instance.HeartBeat(0.5f);
         EffectManager.Instance.CreateEffect(EffectType.ShatteredWindow, 1.0f);
     }

@@ -12943,6 +12943,11 @@ MonoBehaviour:
   maximumBullet: 6
   hpUi: {fileID: 1424143948}
   maximumHp: 5
+  gameStages:
+  - {fileID: 729509180}
+  - {fileID: 1608062179}
+  - {fileID: 1689359105}
+  - {fileID: 269389494}
   crossHair: {fileID: 1595445657}
 --- !u!114 &147068817
 MonoBehaviour:
@@ -16039,7 +16044,7 @@ MonoBehaviour:
       initState: 3
       spawnPoint: {x: 11.45597, y: -0.338531, z: -8.367465}
       movePoint: {x: 0, y: 0, z: 0}
-      attackSpeed: 0
+      attackSpeed: 2
   - enemyDatas:
     - spawnTime: 3
       enemyId: 0
@@ -16047,7 +16052,7 @@ MonoBehaviour:
       initState: 3
       spawnPoint: {x: 4.310041, y: -1.002455, z: -10.02584}
       movePoint: {x: 0, y: 0, z: 0}
-      attackSpeed: 0
+      attackSpeed: 3
 --- !u!65 &269389495
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27659,7 +27664,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648309244}
-  m_LocalRotation: {x: 0.04065722, y: -0.68603146, z: 0.038449805, w: 0.7254168}
+  m_LocalRotation: {x: 0.04065722, y: -0.68603146, z: 0.03844981, w: 0.7254168}
   m_LocalPosition: {x: 18.359955, y: 1.79, z: -50.655273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -61910,7 +61915,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793816794}
-  m_LocalRotation: {x: -0.008887009, y: -0.39041403, z: -0.003768906, w: 0.9205888}
+  m_LocalRotation: {x: -0.008887026, y: -0.39041406, z: -0.0037689141, w: 0.92058885}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

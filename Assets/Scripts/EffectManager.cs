@@ -10,16 +10,40 @@ public enum EffectType
     ShatteredWindow
 }
 
+public enum PostEffectType
+{
+    HeartBeat,
+    Death
+}
+
 public class GameEffect
 {
-    public EffectType type;
+    public PostEffectType type;
     public float lifeTime;
     public Vignette vignette;
+    public Bloom bloom;
+    public DepthOfField dof;
     public float elapsedTime;
+    public bool isRemain;
 
     public void Update()
     {
-        vignette.intensity.value = 0.55f + Mathf.Sin(elapsedTime * 10) * 0.1f;
+        switch (type)
+        {
+            case PostEffectType.HeartBeat:
+                vignette.intensity.value = 0.55f + Mathf.Sin(elapsedTime * 10) * 0.1f;
+                break;
+            case PostEffectType.Death:
+                if (elapsedTime < 1)
+                {
+                    vignette.intensity.value += Time.deltaTime * 0.45f;
+                    vignette.roundness.value += Time.deltaTime;
+                    bloom.intensity.value += Time.deltaTime * 15;
+                    if (bloom.intensity.value > 20) bloom.intensity.value = 20;
+                    dof.focalLength.value += 300 * Time.deltaTime;
+                }
+                break;
+        }
         elapsedTime += Time.deltaTime;
     }
 }
@@ -36,6 +60,7 @@ public class EffectManager : MonoBehaviour
 
     public GameObject[] effectPrefabs;
     public PostProcessProfile profile;
+    public PostProcessVolume volume;
 
     GameEffect gameEffect;
 
@@ -49,6 +74,7 @@ public class EffectManager : MonoBehaviour
         }
 
         Instance = this;
+        profile = volume.profile;
     }
 
     private void Update()
@@ -56,7 +82,13 @@ public class EffectManager : MonoBehaviour
         if (gameEffect != null)
         {
             gameEffect.Update();
-            if (gameEffect.elapsedTime > gameEffect.lifeTime) gameEffect = null;
+            if (gameEffect.elapsedTime > gameEffect.lifeTime)
+            {
+                if (gameEffect.type == PostEffectType.HeartBeat)
+                {
+                    gameEffect = null;
+                }
+            }
         }
     }
 
@@ -65,13 +97,39 @@ public class EffectManager : MonoBehaviour
         if (gameEffect == null)
         {
             GameEffect effect = new GameEffect();
+            effect.type = PostEffectType.HeartBeat;
             effect.lifeTime = lifeTime;
             profile.TryGetSettings(out effect.vignette);
             gameEffect = effect;
         }
         else
         {
-            gameEffect.elapsedTime = 0;
+            if (gameEffect.type == PostEffectType.HeartBeat)
+            {
+                gameEffect.elapsedTime = 0;
+            }
+        }
+    }
+
+    public void Death()
+    {
+        if (gameEffect == null)
+        {
+            GameEffect effect = new GameEffect();
+            effect.type = PostEffectType.Death;
+            profile.TryGetSettings(out effect.vignette);
+            profile.TryGetSettings(out effect.bloom);
+            profile.TryGetSettings(out effect.dof);
+            gameEffect = effect;
+        }
+        else
+        {
+            if (gameEffect.type == PostEffectType.HeartBeat)
+            {
+                profile.TryGetSettings(out gameEffect.bloom);
+                profile.TryGetSettings(out gameEffect.dof);
+                gameEffect.elapsedTime = 0;
+            }
         }
     }
 
