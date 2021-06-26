@@ -18,7 +18,7 @@ public class StartScreen : MonoBehaviour
 
     public void OnClickNewGame()
     {
-        LoadingSceneController.Instance.LoadScene("MainGame");
+        LoadingSceneManager.LoadScene("MainGame");
     }
 
     public void OnClickExitGame()
