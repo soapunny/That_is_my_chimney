@@ -22,6 +22,8 @@ public struct ObjectPoolData
 
 public class ObjectPool : MonoBehaviour
 {
+    public static ObjectPool Instance { get; private set; }
+
     private Dictionary<Obejct_Key, Queue<GameObject>> mObjectPool;
 
     [Header("Object Info")]
@@ -33,6 +35,14 @@ public class ObjectPool : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         GameManager = GameObject.Find("GameManager");
         mObjectPool = new Dictionary<Obejct_Key, Queue<GameObject>>();
         for(int j=0;j<lObjectPoolDatas.Count;j++)

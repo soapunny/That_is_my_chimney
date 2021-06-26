@@ -33,38 +33,32 @@ public class Enemy : MonoBehaviour, IHitable
 
     public OnDeathCallback onDeathCallback;
 
-    public GameObject highlightPrefab;
-    public TargetHighlight targetHighlight;
-    Transform highlightTransform;
+    public TargetHighlight highlight;
+
     float attackTimer;
     Animator animator;
     //Rigidbody rigidBody;
     NavMeshAgent nav;
 
-    private ObjectPool targetPool;
-
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        targetPool = GameObject.Find("GameManager").GetComponent<ObjectPool>();
-        GameObject obj = targetPool.GetObject(Obejct_Key.Target);
-        //if(!(obj is TargetHighlight))
-        //{
-        //    Debug.LogError("[Case Exception] obj는 TargetHighlight의 부모가 아닙니다.");
-        //    return;
-        //}
-
-        targetHighlight = Instantiate( obj.GetComponent<TargetHighlight>(), transform.position, Quaternion.identity);
-        GameObject highlight = targetHighlight.gameObject;
-        highlightTransform = highlight.GetComponent<Transform>();
         animator = GetComponent<Animator>();
         //rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
+        attackTimer = 1.0f;
+    }
+
+    void OnEnable()
+    {
         if (state == EnemyState.Move || state == EnemyState.MoveSit)
 		{
+            Debug.LogWarning("이동 ==> " + destPosition);
             nav.SetDestination(destPosition);
         }
-        attackTimer = 1.0f;
+        highlight.gameObject.SetActive(true);
+        highlight.limitTime = attackSpeed;
+        Debug.Log(gameObject.name);
     }
 
     // Update is called once per frame
@@ -72,9 +66,6 @@ public class Enemy : MonoBehaviour, IHitable
     {
         if (state == EnemyState.Death) return;
 
-        highlightTransform.position = Camera.main.WorldToScreenPoint(transform.position);
-        float scale = 120f / Camera.main.fieldOfView;
-        highlightTransform.localScale = new Vector3(scale, scale, 1f);
         if (attackTimer < 0f)
 		{
             if (state == EnemyState.Sit || state == EnemyState.MoveSit)
@@ -99,7 +90,7 @@ public class Enemy : MonoBehaviour, IHitable
             //nav.ResetPath();
             state = EnemyState.Idle;
             Vector3 dir = (Camera.main.transform.position - transform.position).normalized;
-            nav.SetDestination(transform.position + dir * 0.001f);
+            nav.SetDestination(transform.position + dir * 0.1f);
             //animator.SetBool("FinishMove", true);
             //rigidBody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
         }
@@ -110,14 +101,17 @@ public class Enemy : MonoBehaviour, IHitable
         Death();
     }
 
+    void Attack()
+    {
+        EffectManager.Instance.HeartBeat(0.5f);
+        EffectManager.Instance.CreateEffect(EffectType.ShatteredWindow, 1.0f);
+    }
+
     void Death()
     {
-        if (state == EnemyState.Death)
-            return;
+        if (state == EnemyState.Death) return;
 
-        targetHighlight.enabled = false;
-        highlightTransform.gameObject.SetActive(false);
-        targetPool.ReleaseObject(Obejct_Key.Target, targetHighlight.gameObject);
+        highlight.gameObject.SetActive(false);
         animator.SetTrigger("Death");
         state = EnemyState.Death;
         onDeathCallback(this);

@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TargetHighlight : MonoBehaviour
 {
-    public Image outerCircle;
-    public Image innerCircle;
+    public SpriteRenderer outerCircle;
+    public SpriteRenderer innerCircle;
 
     [Header("Outer Image Color")]
     public Color fromOuterColor;
@@ -17,9 +16,10 @@ public class TargetHighlight : MonoBehaviour
     public Color toInnerColor;
 
     float elapsedTime;
+    public float limitTime;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         elapsedTime = 0f;
         outerCircle.color = fromOuterColor;
@@ -29,8 +29,10 @@ public class TargetHighlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        outerCircle.color = Color.Lerp(fromOuterColor, toOuterColor, elapsedTime);
-        innerCircle.color = Color.Lerp(fromInnerColor, toInnerColor, elapsedTime);
+        transform.LookAt(UICamera.Instance.transform);
+
+        outerCircle.color = Color.Lerp(fromOuterColor, toOuterColor, elapsedTime / limitTime);
+        innerCircle.color = Color.Lerp(fromInnerColor, toInnerColor, elapsedTime / limitTime);
         innerCircle.transform.Rotate(new Vector3(0.0f, 0.0f, 360 * Time.deltaTime));
         elapsedTime += Time.deltaTime;
     }
