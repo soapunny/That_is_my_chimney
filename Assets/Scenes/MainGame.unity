@@ -7451,7 +7451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b740450ed1f574b8f7812f00b1a5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTransform: {fileID: 0}
+  fireTransform: {fileID: 534669905}
   shotClip: {fileID: 0}
   reloadClip: {fileID: 0}
   gunDamage: 1
@@ -12939,9 +12939,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dollyCartObject: {fileID: 1883117839}
-  bulletImage: []
-  hpImage: []
-  crossHair: {fileID: 0}
+  bulletImage:
+  - {fileID: 1113808567}
+  - {fileID: 1240846381}
+  - {fileID: 1568911340}
+  - {fileID: 2072206285}
+  - {fileID: 1002937988}
+  - {fileID: 2139405536}
+  hpImage:
+  - {fileID: 873081272}
+  - {fileID: 1233641035}
+  - {fileID: 551232643}
+  - {fileID: 1087004149}
+  - {fileID: 204107455}
+  crossHair: {fileID: 1595445657}
 --- !u!114 &147068817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27819,7 +27830,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648309244}
-  m_LocalRotation: {x: 0.04065722, y: -0.6860314, z: 0.0384498, w: 0.72541684}
+  m_LocalRotation: {x: 0.04065722, y: -0.68603146, z: 0.038449805, w: 0.7254168}
   m_LocalPosition: {x: 18.359955, y: 1.79, z: -50.655273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -62365,7 +62376,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793816794}
-  m_LocalRotation: {x: -0.008887002, y: -0.39041406, z: -0.003768904, w: 0.92058885}
+  m_LocalRotation: {x: -0.008887023, y: -0.39041403, z: -0.0037689118, w: 0.9205888}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
