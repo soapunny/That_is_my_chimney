@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour, IHitable
 {
     public delegate void OnDeathCallback(Enemy enemy);
 
+    public Obejct_Key enemyId;
     public EnemyState state;
     public float attackSpeed;
     public Vector3 destPosition;
@@ -33,17 +34,28 @@ public class Enemy : MonoBehaviour, IHitable
     public OnDeathCallback onDeathCallback;
 
     public GameObject highlightPrefab;
+    public TargetHighlight targetHighlight;
     Transform highlightTransform;
     float attackTimer;
     Animator animator;
     //Rigidbody rigidBody;
     NavMeshAgent nav;
 
+    private ObjectPool targetPool;
+
     // Start is called before the first frame update
     void Start()
     {
-        GameObject highlight = Instantiate(highlightPrefab);
-        highlight.transform.SetParent(FindObjectOfType<Canvas>().transform);
+        targetPool = GameObject.Find("GameManager").GetComponent<ObjectPool>();
+        GameObject obj = targetPool.GetObject(Obejct_Key.Target);
+        //if(!(obj is TargetHighlight))
+        //{
+        //    Debug.LogError("[Case Exception] obj는 TargetHighlight의 부모가 아닙니다.");
+        //    return;
+        //}
+
+        targetHighlight = Instantiate( obj.GetComponent<TargetHighlight>(), transform.position, Quaternion.identity);
+        GameObject highlight = targetHighlight.gameObject;
         highlightTransform = highlight.GetComponent<Transform>();
         animator = GetComponent<Animator>();
         //rigidBody = GetComponent<Rigidbody>();
@@ -103,10 +115,12 @@ public class Enemy : MonoBehaviour, IHitable
         if (state == EnemyState.Death)
             return;
 
+        targetHighlight.enabled = false;
         highlightTransform.gameObject.SetActive(false);
+        targetPool.ReleaseObject(Obejct_Key.Target, targetHighlight.gameObject);
         animator.SetTrigger("Death");
         state = EnemyState.Death;
         onDeathCallback(this);
-        Destroy(gameObject, 1.0f);
+        //Destroy(gameObject, 1.0f);
     }
 }
