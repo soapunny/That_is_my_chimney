@@ -66,6 +66,7 @@ public class Gun : MonoBehaviour
             {
                 hitable.Hit();
             }
+            EffectManager.Instance.CreateEffect(EffectType.HitEffect, 1.5f, hitInfo.point);
         }
     }
 
