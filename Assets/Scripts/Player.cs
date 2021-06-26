@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         handGun = GetComponent<Gun>();
 
         dollyCart = cart.gameObject.GetComponent<CinemachineDollyCart>();
-        Run();
+        //Run();
     }
 
     // Update is called once per frame

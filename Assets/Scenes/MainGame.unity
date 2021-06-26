@@ -7407,10 +7407,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04a0c9dd43f908418364eba42ffcc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingCamara: {fileID: 0}
-  animator: {fileID: 0}
+  movingCamara: {fileID: 893763442}
+  animator: {fileID: 3420549815832359472, guid: c73f11c7efd75c44ba020cdfddad630e, type: 3}
   handGun: {fileID: 134526071}
-  cart: {fileID: 0}
+  cart: {fileID: 1883117839}
 --- !u!4 &134526069
 Transform:
   m_ObjectHideFlags: 0
@@ -12904,6 +12904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 147068815}
   - component: {fileID: 147068816}
+  - component: {fileID: 147068817}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -12937,7 +12938,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60d9e40a3954c94782693091748dddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dollyCartObject: {fileID: 0}
+  dollyCartObject: {fileID: 1883117839}
+--- !u!114 &147068817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147068814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f99f1f50f82264fb13e1ab491a1db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lObjectPoolDatas:
+  - objectKey: 0
+    ObjectPrefab: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
+    objectCnt: 10
+  - objectKey: 2
+    ObjectPrefab: {fileID: 2447328758599538288, guid: 7761ce66ce0d91e4e98843f213bce7b3, type: 3}
+    objectCnt: 10
 --- !u!1 &147800856
 GameObject:
   m_ObjectHideFlags: 0
@@ -15997,14 +16017,14 @@ MonoBehaviour:
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.3
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 3
       spawnPoint: {x: -0.2302621, y: -0.750494, z: -22.29382}
       movePoint: {x: 0, y: 0, z: 0}
       attackSpeed: 1.5
     - spawnTime: 3
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 1
       spawnPoint: {x: -2.627394, y: -0.7351198, z: -14.83}
@@ -16012,7 +16032,7 @@ MonoBehaviour:
       attackSpeed: 1.5
   - enemyDatas:
     - spawnTime: 0.5
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 3
       spawnPoint: {x: 11.45597, y: -0.338531, z: -8.367465}
@@ -16020,7 +16040,7 @@ MonoBehaviour:
       attackSpeed: 0
   - enemyDatas:
     - spawnTime: 3
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 3
       spawnPoint: {x: 4.310041, y: -1.002455, z: -10.02584}
@@ -27506,7 +27526,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648309244}
-  m_LocalRotation: {x: 0.04065722, y: -0.68603146, z: 0.03844981, w: 0.7254168}
+  m_LocalRotation: {x: 0.04065722, y: -0.6860314, z: 0.0384498, w: 0.72541684}
   m_LocalPosition: {x: 18.359955, y: 1.79, z: -50.655273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -29412,7 +29432,7 @@ MonoBehaviour:
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.3
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 2
       spawnPoint: {x: 20.74114, y: 1.78154, z: -70.08289}
@@ -29420,7 +29440,7 @@ MonoBehaviour:
       attackSpeed: 2
   - enemyDatas:
     - spawnTime: 0.5
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 2
       spawnPoint: {x: 30.833, y: -0.4, z: -54.663}
@@ -29428,7 +29448,7 @@ MonoBehaviour:
       attackSpeed: 2
   - enemyDatas:
     - spawnTime: 2
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 2
       spawnPoint: {x: 28.382, y: -0.131, z: -59.535}
@@ -47205,6 +47225,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4529694222867952, guid: 56c157ca6ee6048438b794436bc7e413, type: 3}
   m_PrefabInstance: {fileID: 1339741778}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1347349012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1347349013}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1347349013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347349012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.74114, y: 1.78154, z: -70.08289}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1348476206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52736,7 +52786,7 @@ MonoBehaviour:
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.3
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 2
       spawnPoint: {x: 10.29, y: 1.77, z: -50.78}
@@ -52744,7 +52794,7 @@ MonoBehaviour:
       attackSpeed: 0
   - enemyDatas:
     - spawnTime: 0.5
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 0
       spawnPoint: {x: 12.65, y: 0.8, z: -51.24}
@@ -52752,7 +52802,7 @@ MonoBehaviour:
       attackSpeed: 0
   - enemyDatas:
     - spawnTime: 3
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 0
       spawnPoint: {x: 15.2, y: 1, z: -48.18}
@@ -54118,7 +54168,7 @@ MonoBehaviour:
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.5
-      enemyId: Enemy1
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 2
       spawnPoint: {x: 22.336, y: -0.54, z: -21.263}
@@ -54126,22 +54176,22 @@ MonoBehaviour:
       attackSpeed: 3
   - enemyDatas:
     - spawnTime: 3
-      enemyId: Enemy2
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 0
       spawnPoint: {x: 31.495, y: -1.779, z: -18.184}
       movePoint: {x: 31.495, y: -1.779, z: -15}
       attackSpeed: 3
     - spawnTime: 4
-      enemyId: Enemy3
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 2
       spawnPoint: {x: 31.495, y: -1.779, z: -19}
-      movePoint: {x: 31.495, y: -3, z: -19}
+      movePoint: {x: 32, y: -3, z: -19}
       attackSpeed: 3
   - enemyDatas:
     - spawnTime: 6
-      enemyId: Enemy4
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 0
       spawnPoint: {x: 23.79, y: -0.54, z: -17.998}
@@ -61381,7 +61431,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793816794}
-  m_LocalRotation: {x: -0.008887026, y: -0.39041406, z: -0.0037689141, w: 0.92058885}
+  m_LocalRotation: {x: -0.008887009, y: -0.39041403, z: -0.003768906, w: 0.9205888}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
