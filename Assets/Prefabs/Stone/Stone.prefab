@@ -120,6 +120,7 @@ MonoBehaviour:
   stoneCollider: {fileID: 0}
   stoneDurability: 3
   stoneStatus: 0
+  moveSpeed: 30
 --- !u!1 &8545049646902767813
 GameObject:
   m_ObjectHideFlags: 0

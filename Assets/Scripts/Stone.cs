@@ -16,7 +16,7 @@ public class Stone : MonoBehaviour, IHitable
     public MeshCollider stoneCollider;
     public int stoneDurability;
     public StoneStatus stoneStatus;
-
+    public float moveSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,5 +54,10 @@ public class Stone : MonoBehaviour, IHitable
         stoneDurability = 0;
         stoneStatus = StoneStatus.Destroy;
         
+    }
+
+    public void Move()
+    {
+
     }
 }
