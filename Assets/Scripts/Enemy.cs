@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour, IHitable
 {
     public delegate void OnDeathCallback(Enemy enemy);
 
+    public Obejct_Key enemyId;
     public EnemyState state;
     public float attackSpeed;
     public Vector3 destPosition;
@@ -32,27 +33,32 @@ public class Enemy : MonoBehaviour, IHitable
 
     public OnDeathCallback onDeathCallback;
 
-    public GameObject center;
-    public GameObject highlightPrefab;
+    public TargetHighlight highlight;
+
     float attackTimer;
     Animator animator;
     //Rigidbody rigidBody;
     NavMeshAgent nav;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        GameObject highlight = Instantiate(highlightPrefab);
-        highlight.GetComponent<TargetHighlight>().target = center;
-
         animator = GetComponent<Animator>();
         //rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
+        attackTimer = 1.0f;
+    }
+
+    void OnEnable()
+    {
         if (state == EnemyState.Move || state == EnemyState.MoveSit)
 		{
+            Debug.LogWarning("ÀÌµ¿ ==> " + destPosition);
             nav.SetDestination(destPosition);
         }
-        attackTimer = 1.0f;
+        highlight.gameObject.SetActive(true);
+        highlight.limitTime = attackSpeed;
+        Debug.Log(gameObject.name);
     }
 
     // Update is called once per frame
@@ -103,12 +109,12 @@ public class Enemy : MonoBehaviour, IHitable
 
     void Death()
     {
-        if (state == EnemyState.Death)
-            return;
+        if (state == EnemyState.Death) return;
 
+        highlight.gameObject.SetActive(false);
         animator.SetTrigger("Death");
         state = EnemyState.Death;
         onDeathCallback(this);
-        Destroy(gameObject, 1.0f);
+        //Destroy(gameObject, 1.0f);
     }
 }

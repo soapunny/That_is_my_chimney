@@ -41150,36 +41150,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029183701}
   m_Mesh: {fileID: 4300012, guid: eb76af53d2874ae4180dd3e91647cf88, type: 3}
---- !u!1 &1033300042
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1033300043}
-  m_Layer: 0
-  m_Name: GameObject (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1033300043
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033300042}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8071279, y: -0.723794, z: -22.515121}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1047395039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53690,14 +53660,14 @@ MonoBehaviour:
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.3
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 3
       spawnPoint: {x: -0.2302621, y: -0.750494, z: -22.29382}
       movePoint: {x: 0, y: 0, z: 0}
       attackSpeed: 1.5
     - spawnTime: 3
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 1
       spawnPoint: {x: -2.627394, y: -0.7351198, z: -14.83}
@@ -53705,7 +53675,7 @@ MonoBehaviour:
       attackSpeed: 1.5
   - enemyDatas:
     - spawnTime: 0.5
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 3
       spawnPoint: {x: 11.45597, y: -0.338531, z: -8.367465}
@@ -53713,7 +53683,7 @@ MonoBehaviour:
       attackSpeed: 0
   - enemyDatas:
     - spawnTime: 3
-      enemyId: Ninja
+      enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 3
       spawnPoint: {x: 4.310041, y: -1.002455, z: -10.02584}
@@ -67553,6 +67523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055478213}
   - component: {fileID: 2055478212}
+  - component: {fileID: 2055478214}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -67573,6 +67544,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dollyCartObject: {fileID: 0}
+  bulletImage:
+  - {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
+  - {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
+  - {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
+  - {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
+  - {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
+  - {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
+  hpImage:
+  - {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
+  - {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
+  - {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
+  crossHair: {fileID: 2268265805553579399, guid: 6970375ef896a6a408bbd524720e8408, type: 3}
 --- !u!4 &2055478213
 Transform:
   m_ObjectHideFlags: 0
@@ -67587,6 +67570,22 @@ Transform:
   m_Father: {fileID: 1474819045}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2055478214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055478211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f99f1f50f82264fb13e1ab491a1db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lObjectPoolDatas:
+  - objectKey: 0
+    ObjectPrefab: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
+    objectCnt: 10
 --- !u!1001 &2056135932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68146,7 +68145,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095857268}
-  m_LocalRotation: {x: -2.1851095e-15, y: 0.84633434, z: 3.4719351e-15, w: 0.5326521}
+  m_LocalRotation: {x: 2.1851093e-15, y: 0.84633434, z: -3.4719347e-15, w: 0.5326521}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

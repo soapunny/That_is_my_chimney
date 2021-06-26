@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public GameObject cart;
     CinemachineDollyCart dollyCart;
 
+    private int playerHp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,13 @@ public class Player : MonoBehaviour
 
         dollyCart = cart.gameObject.GetComponent<CinemachineDollyCart>();
         //Run();
+
+        //SetPlayerHp && UI
+        playerHp = 3;
+        for(int i = 0; i < playerHp; i++)
+        {
+            GameManager.gameManager.PlusHpImage(i);
+        }
     }
 
     // Update is called once per frame
@@ -38,6 +47,10 @@ public class Player : MonoBehaviour
             handGun.Fire();
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+        if(playerInput.reload)
+        {
+            handGun.Reload();
         }
     }
     public void Run()
@@ -55,5 +68,17 @@ public class Player : MonoBehaviour
             isRunning = false;
             animator.SetBool("isRunning", isRunning);
         }
+    }
+
+    public void GetDamage()
+    {
+        GameManager.gameManager.MinusHpImage(playerHp - 1);
+        playerHp--;
+    }
+
+    public void GetHeal()
+    {
+        GameManager.gameManager.MinusHpImage(playerHp);
+        playerHp++;
     }
 }

@@ -7,9 +7,6 @@ public class TargetHighlight : MonoBehaviour
     public SpriteRenderer outerCircle;
     public SpriteRenderer innerCircle;
 
-    [Header("Target Object")]
-    public GameObject target;
-
     [Header("Outer Image Color")]
     public Color fromOuterColor;
     public Color toOuterColor;
@@ -19,9 +16,10 @@ public class TargetHighlight : MonoBehaviour
     public Color toInnerColor;
 
     float elapsedTime;
+    public float limitTime;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         elapsedTime = 0f;
         outerCircle.color = fromOuterColor;
@@ -31,11 +29,10 @@ public class TargetHighlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = target.transform.position;
         transform.LookAt(UICamera.Instance.transform);
 
-        outerCircle.color = Color.Lerp(fromOuterColor, toOuterColor, elapsedTime);
-        innerCircle.color = Color.Lerp(fromInnerColor, toInnerColor, elapsedTime);
+        outerCircle.color = Color.Lerp(fromOuterColor, toOuterColor, elapsedTime / limitTime);
+        innerCircle.color = Color.Lerp(fromInnerColor, toInnerColor, elapsedTime / limitTime);
         innerCircle.transform.Rotate(new Vector3(0.0f, 0.0f, 360 * Time.deltaTime));
         elapsedTime += Time.deltaTime;
     }
