@@ -17,11 +17,15 @@ public class Stone : MonoBehaviour, IHitable
     public int stoneDurability;
     public StoneStatus stoneStatus;
     public float moveSpeed;
+    public Player target;
+    private bool isMove;
     // Start is called before the first frame update
     void Start()
     {
         stoneMeshRenderer = GetComponent<MeshRenderer>();
         stoneCollider = GetComponent<MeshCollider>();
+        isMove = false;
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -31,6 +35,11 @@ public class Stone : MonoBehaviour, IHitable
         {
             Destroyed();
         }
+        if (isMove)
+        {
+            Move();
+        }
+        PlayerCollision();
     }
     public void Hit()   // 총에 맞았을 때 상태 구현
     {
@@ -49,15 +58,23 @@ public class Stone : MonoBehaviour, IHitable
     }
 
     //카메라 충돌 구현 필요
-    public void PlayerCollision()
+    private void PlayerCollision()
     {
-        stoneDurability = 0;
-        stoneStatus = StoneStatus.Destroy;
-        
+        if (gameObject.transform.position == Camera.main.transform.position)
+        {
+            if (stoneStatus == StoneStatus.Destroy) return;
+            target.GetDamage();
+            stoneDurability = 0;
+            stoneStatus = StoneStatus.Destroy;
+            isMove = false;
+        }
     }
-
-    public void Move()
+    public void IsThrow()
     {
-
+        isMove = true;
+    }
+    private void Move()
+    {
+        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, Camera.main.transform.position, moveSpeed * Time.deltaTime);
     }
 }

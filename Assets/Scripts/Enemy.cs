@@ -116,10 +116,10 @@ public class Enemy : MonoBehaviour, IHitable
     {
         if (state == EnemyState.Death) return;
 
+        animator.SetTrigger("Death");
         nav.ResetPath();
         collider.enabled = false;
         highlight.gameObject.SetActive(false);
-        animator.SetTrigger("Death");
         state = EnemyState.Death;
         onDeathCallback(this);
         //Destroy(gameObject, 1.0f);
