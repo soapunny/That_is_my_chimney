@@ -291,19 +291,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3242a1923ee7b604cb503ef76d97be36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyId: 0
+  enemyId: 1
   state: 0
-  attackSpeed: 5
-  destPosition: {x: 0, y: 0, z: 0}
+  attackSpeed: 1
+  destPosition: {x: 5, y: 1, z: 10}
   hp: 20
   highlight: {fileID: 5385722846397964077, guid: 726b8094e982c9648be88d4efedb85a7, type: 3}
-  objectKey: 0
-  enemyId: 0
-  state: 0
-  attackSpeed: 5
-  destPosition: {x: 0, y: 0, z: 0}
-  hp: 5
-  highlight: {fileID: 0}
+  target: {fileID: 0}
+  objectKey: 1
 --- !u!1 &8501588790447114063
 GameObject:
   m_ObjectHideFlags: 0
