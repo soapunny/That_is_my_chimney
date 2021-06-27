@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.6385719, g: 0.7056571, b: 0.7078347, a: 1}
+  m_IndirectSpecularColor: {r: 0.6385712, g: 0.7056556, b: 0.70783335, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13018,6 +13018,9 @@ MonoBehaviour:
   - objectKey: 1
     ObjectPrefab: {fileID: 963136673372609166, guid: b279994699a707c4ea83ce1c8d727039, type: 3}
     objectCnt: 10
+  - objectKey: 2
+    ObjectPrefab: {fileID: 8501588790440735198, guid: 26b466b05cffd434b81c4d3ad4c64131, type: 3}
+    objectCnt: 1
 --- !u!1 &147800856
 GameObject:
   m_ObjectHideFlags: 0
@@ -15326,7 +15329,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239658204}
-  m_LocalRotation: {x: 0.17352915, y: -0.06541415, z: 0.011552439, w: 0.98258597}
+  m_LocalRotation: {x: 0.17351629, y: -0.066496, z: 0.011743495, w: 0.98251337}
   m_LocalPosition: {x: 25.576, y: 1.722, z: -31.453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24811,7 +24814,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495889467}
-  m_LocalRotation: {x: 0.0061623435, y: 0.88898546, z: -0.011968065, w: 0.45773765}
+  m_LocalRotation: {x: 0.0061623408, y: 0.8889854, z: -0.011968063, w: 0.45773768}
   m_LocalPosition: {x: 4.1923094, y: 2.1223638, z: -5.2359734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -42421,12 +42424,19 @@ MonoBehaviour:
   virtualCamera: {fileID: 495889470}
   enemyGroups:
   - enemyDatas:
-    - spawnTime: 1
+    - spawnTime: 10
       enemyId: 1
-      enemyObj: {fileID: 8501588790440735198, guid: 26b466b05cffd434b81c4d3ad4c64131, type: 3}
+      enemyObj: {fileID: 963136673372609166, guid: b279994699a707c4ea83ce1c8d727039, type: 3}
       initState: 0
       spawnPoint: {x: 6, y: -0.4983418, z: 15}
       movePoint: {x: 6.19, y: 0.82, z: 4.2}
+      attackSpeed: 1
+    - spawnTime: 1
+      enemyId: 2
+      enemyObj: {fileID: 8501588790440735198, guid: 26b466b05cffd434b81c4d3ad4c64131, type: 3}
+      initState: 0
+      spawnPoint: {x: 6, y: -0.4983418, z: 15}
+      movePoint: {x: 0, y: 0, z: 0}
       attackSpeed: 1
 --- !u!65 &1037542237
 BoxCollider:
@@ -43785,7 +43795,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104648978}
-  m_LocalRotation: {x: 0.3306298, y: -0.5214437, z: 0.22910205, w: 0.7525242}
+  m_LocalRotation: {x: 0.34598395, y: -0.46699673, z: 0.20518017, w: 0.7874709}
   m_LocalPosition: {x: 36.36855, y: 0.5, z: -52.311157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -63318,7 +63328,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793816794}
-  m_LocalRotation: {x: -0.008887009, y: -0.39041403, z: -0.003768906, w: 0.9205888}
+  m_LocalRotation: {x: -0.008887024, y: -0.39041403, z: -0.0037689127, w: 0.92058885}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

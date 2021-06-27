@@ -23,6 +23,9 @@ public class Boss : Enemy
     Rigidbody rigidbody;
     GameObject dollyCart;
     private GameObject mainCamera;
+    private GameObject stone;
+    public GameObject stonePrefab;
+
     //public delegate void OnDeathCallback(Enemy enemy);
 
     // Start is called before the first frame update
@@ -45,7 +48,7 @@ public class Boss : Enemy
         if (bossState == BossState.Idle)
         {
             Debug.LogWarning("이동 ==> " + destPosition);
-            nav.SetDestination(destPosition);
+            //nav.SetDestination(destPosition);
         }
         bossState = BossState.RockMode;
         highlight.gameObject.SetActive(true);
@@ -64,7 +67,7 @@ public class Boss : Enemy
             introTimer += Time.deltaTime;
         if (introTimer >= 1f && bossState == BossState.RockMode)
         {
-            rigidbody.AddForce(new Vector3(100f, velocity, 0f));
+            rigidbody.AddForce(new Vector3(-200f, velocity, -200f));
             animator.SetInteger("JumpState", 1);
             bossState = BossState.JumpingUp;
         }
@@ -113,6 +116,9 @@ public class Boss : Enemy
     }
     void Attack()
     {
+        stone = Instantiate(stonePrefab) as GameObject;
+        stone.transform.SetParent(transform, false);
+        stone.GetComponent<Stone>().IsThrow();
         target.GetDamage();
         EffectManager.Instance.HeartBeat(0.5f);
         EffectManager.Instance.CreateEffect(EffectType.ShatteredWindow, 1.0f);
@@ -133,6 +139,7 @@ public class Boss : Enemy
     {
         if(bossState == BossState.Falling)
         {
+            rigidbody.isKinematic = true;
             bossState = BossState.Idle;
             animator.SetInteger("JumpState", 0);
             dollyCart.SetActive(true);
