@@ -34,11 +34,14 @@ public class Enemy : MonoBehaviour, IHitable
     public OnDeathCallback onDeathCallback;
 
     public TargetHighlight highlight;
+    public Player target;
 
     protected float attackTimer;
     protected Animator animator;
     //Rigidbody rigidBody;
     protected NavMeshAgent nav;
+
+    protected Collider collider;
 
     // Start is called before the first frame update
     private void Awake()
@@ -47,6 +50,8 @@ public class Enemy : MonoBehaviour, IHitable
         //rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         attackTimer = 1.0f;
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        collider = GetComponent<CapsuleCollider>();
     }
 
     void OnEnable()
@@ -58,7 +63,7 @@ public class Enemy : MonoBehaviour, IHitable
         }
         highlight.gameObject.SetActive(true);
         highlight.limitTime = attackSpeed;
-        Debug.Log(gameObject.name);
+        collider.enabled = true;
     }
 
     // Update is called once per frame
@@ -103,6 +108,7 @@ public class Enemy : MonoBehaviour, IHitable
 
     void Attack()
     {
+        target.GetDamage();
         EffectManager.Instance.HeartBeat(0.5f);
         EffectManager.Instance.CreateEffect(EffectType.ShatteredWindow, 1.0f);
     }
@@ -111,10 +117,19 @@ public class Enemy : MonoBehaviour, IHitable
     {
         if (state == EnemyState.Death) return;
 
-        highlight.gameObject.SetActive(false);
         animator.SetTrigger("Death");
+        nav.ResetPath();
+        collider.enabled = false;
+        highlight.gameObject.SetActive(false);
         state = EnemyState.Death;
         onDeathCallback(this);
         //Destroy(gameObject, 1.0f);
+    }
+
+    void Release()
+    {
+        gameObject.SetActive(false);
+        EffectManager.Instance.CreateEffect(EffectType.NinjaDisappear, 1.5f, transform.position);
+        ObjectPool.Instance.ReleaseObject(enemyId, gameObject);
     }
 }

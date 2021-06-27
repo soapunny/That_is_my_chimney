@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +13,18 @@ public class GameManager : MonoBehaviour
     public int maximumBullet;
     public Image hpUi;
     public int maximumHp;
+
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI reloadText;
+
+    public GameObject gameOver;
+    public GameObject reLoad;
+
+    int score;
+    float elapsedTime;
+    public GameStage currStage;
+    public GameStage[] gameStages;
 
     [SerializeField]
     GameObject crossHair;
@@ -37,6 +51,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Score, Clear Time Text Update
+        score = 0;
+        elapsedTime = 0;
+        foreach (var stage in gameStages)
+        {
+            score += stage.score;
+            elapsedTime += stage.clearTime;
+        }
+        scoreText.text = "score : " + score.ToString("N0");
+        timeText.text = "time  : " + elapsedTime.ToString("F2");
+
         CrossHairUpdate();
     }
 
@@ -54,5 +79,26 @@ public class GameManager : MonoBehaviour
     {
         float fillAmount = (float)currBullet / (float)maximumBullet;
         bulletUi.fillAmount = fillAmount;
+    }
+
+    public void GameOver()
+    {
+        gameOver.SetActive(true);
+        if (currStage) currStage.GameOver();
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void EraseReload()
+    {
+        reLoad.SetActive(false);
+    }
+
+    public void ShowReload()
+    {
+        reLoad.SetActive(true);
     }
 }
