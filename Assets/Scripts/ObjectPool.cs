@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public enum Obejct_Key // your custom enumeration
 {
     NormalEnemy,
+    BossGuard,
     BossEnemy,
     Target
 };
@@ -67,6 +68,9 @@ public class ObjectPool : MonoBehaviour
         switch (object_key)
         {
             case Obejct_Key.NormalEnemy:
+                gameobj.transform.SetParent(GameManager.transform, true);
+                break;
+            case Obejct_Key.BossGuard:
                 gameobj.transform.SetParent(GameManager.transform, true);
                 break;
             case Obejct_Key.BossEnemy:

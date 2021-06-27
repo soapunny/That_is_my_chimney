@@ -12971,6 +12971,9 @@ MonoBehaviour:
   - objectKey: 0
     ObjectPrefab: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
     objectCnt: 10
+  - objectKey: 1
+    ObjectPrefab: {fileID: 963136673372609166, guid: b279994699a707c4ea83ce1c8d727039, type: 3}
+    objectCnt: 5
 --- !u!1 &147800856
 GameObject:
   m_ObjectHideFlags: 0
@@ -28016,7 +28019,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648309244}
-  m_LocalRotation: {x: 0.04065722, y: -0.68603146, z: 0.03844981, w: 0.7254168}
+  m_LocalRotation: {x: 0.04065722, y: -0.6860314, z: 0.0384498, w: 0.72541684}
   m_LocalPosition: {x: 18.359955, y: 1.79, z: -50.655273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -29924,6 +29927,13 @@ MonoBehaviour:
     - spawnTime: 1.3
       enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
+      initState: 2
+      spawnPoint: {x: 20.74114, y: 1.78154, z: -70.08289}
+      movePoint: {x: 31.57082, y: -0.8502455, z: -57.12392}
+      attackSpeed: 2
+    - spawnTime: 1.3
+      enemyId: 1
+      enemyObj: {fileID: 963136673372609166, guid: b279994699a707c4ea83ce1c8d727039, type: 3}
       initState: 2
       spawnPoint: {x: 20.74114, y: 1.78154, z: -70.08289}
       movePoint: {x: 31.57082, y: -0.8502455, z: -57.12392}
@@ -62842,7 +62852,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793816794}
-  m_LocalRotation: {x: -0.008887012, y: -0.39041406, z: -0.0037689076, w: 0.9205888}
+  m_LocalRotation: {x: -0.008887024, y: -0.39041403, z: -0.0037689127, w: 0.92058885}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -36,7 +36,7 @@ public class Stone : MonoBehaviour, IHitable
         {
             Destroyed();
         }
-        if (isMove)
+        if (isMove && stoneStatus == StoneStatus.Stone)
         {
             Move();
         }
@@ -54,11 +54,10 @@ public class Stone : MonoBehaviour, IHitable
         stoneStatus = StoneStatus.Destroy;
         stoneMeshRenderer.enabled = false;
         stoneCollider.enabled = false;
-        int Num = Random.Range(0, 3);
         particle.SetActive(true);
+        Destroy(gameObject, 2.0f);
     }
 
-    //카메라 충돌 구현 필요
     private void PlayerCollision()
     {
         if (gameObject.transform.position == Camera.main.transform.position)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 965a5de14659be64094e840aad7609eb
+guid: 75bf79f8876829a44bb388ccd90400a7
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -374,7 +374,7 @@ ModelImporter:
     second: polySurface1
   - first:
       74: 7400000
-    second: attack_1
+    second: idle
   - first:
       95: 9500000
     second: //RootNode
@@ -410,18 +410,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: attack_1
+      name: idle
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 36
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -433,138 +433,9 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.50499976
-        functionName: Attack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask:
-      - path: 
-        weight: 1
-      - path: polySurface1
-        weight: 1
-      - path: root
-        weight: 1
-      - path: root/body
-        weight: 1
-      - path: root/body/chest
-        weight: 1
-      - path: root/body/chest/head
-        weight: 1
-      - path: root/body/chest/head/ear_L
-        weight: 1
-      - path: root/body/chest/head/ear_R
-        weight: 1
-      - path: root/body/chest/head/eye_L
-        weight: 1
-      - path: root/body/chest/head/eye_R
-        weight: 1
-      - path: root/body/chest/head/hair_1
-        weight: 1
-      - path: root/body/chest/head/hair_1/hair_2
-        weight: 1
-      - path: root/body/chest/head/hair_1/hair_2/hair_3
-        weight: 1
-      - path: root/body/chest/head/hair_1/hair_2/hair_3/hair_4
-        weight: 1
-      - path: root/body/chest/head/hair_1/hair_2/hair_3/hair_4/hair_5
-        weight: 1
-      - path: root/body/chest/head/hair_1/hair_2/hair_3/hair_4/hair_5/hair_6
-        weight: 1
-      - path: root/body/chest/head/hair_1/hair_2/hair_3/hair_4/hair_5/hair_6/hair_7
-        weight: 1
-      - path: root/body/chest/shoulder
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2/hand_L
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2/hand_L/finger_b
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2/hand_L/fingers_L_1
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2/hand_L/fingers_L_1/fingers_L_2
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2/hand_L/fingers_L_3
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2/hand_L/fingers_L_3/fingers_L_4
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2/hand_L/fingers_L_5
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2/hand_L/fingers_L_5/fingers_L_6
-        weight: 1
-      - path: root/body/chest/shoulder/arm_L_1/arm_L_2/hand_L1
-        weight: 1
-      - path: root/body/chest/shoulder1
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2/hand_R
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2/hand_R/finger_b 1
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2/hand_R/fingers_R_1
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2/hand_R/fingers_R_1/fingers_R_2
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2/hand_R/fingers_R_3
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2/hand_R/fingers_R_3/fingers_R_4
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2/hand_R/fingers_R_5
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2/hand_R/fingers_R_5/fingers_R_6
-        weight: 1
-      - path: root/body/chest/shoulder1/arm_R_1/arm_R_2/hand_R1
-        weight: 1
-      - path: root/body/chest/wing_L_1
-        weight: 1
-      - path: root/body/chest/wing_L_1/wing_L_2
-        weight: 1
-      - path: root/body/chest/wing_L_1/wing_L_2/wing_L_3
-        weight: 1
-      - path: root/body/chest/wing_R_1
-        weight: 1
-      - path: root/body/chest/wing_R_1/wing_R_2
-        weight: 1
-      - path: root/body/chest/wing_R_1/wing_R_2/wing_R_3
-        weight: 1
-      - path: root/body/cloth_1
-        weight: 1
-      - path: root/body/cloth_1/cloth_2
-        weight: 1
-      - path: root/body/leg_L_1
-        weight: 1
-      - path: root/body/leg_L_1/leg_L_2
-        weight: 1
-      - path: root/body/leg_L_1/leg_L_2/leg_L_3
-        weight: 1
-      - path: root/body/leg_L_1/leg_L_2/nakolennik_L
-        weight: 1
-      - path: root/body/leg_R_1
-        weight: 1
-      - path: root/body/leg_R_1/leg_R_2
-        weight: 1
-      - path: root/body/leg_R_1/leg_R_2/leg_R_3
-        weight: 1
-      - path: root/body/leg_R_1/leg_R_2/nakolennik_R
-        weight: 1
-      - path: root/body/tail_1
-        weight: 1
-      - path: root/body/tail_1/tail_2
-        weight: 1
-      - path: root/body/tail_1/tail_2/tail_3
-        weight: 1
-      - path: root/stick
-        weight: 1
-      maskType: 0
+      events: []
+      transformMask: []
+      maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 1
