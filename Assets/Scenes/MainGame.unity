@@ -13015,6 +13015,9 @@ MonoBehaviour:
   - objectKey: 0
     ObjectPrefab: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
     objectCnt: 10
+  - objectKey: 1
+    ObjectPrefab: {fileID: 963136673372609166, guid: b279994699a707c4ea83ce1c8d727039, type: 3}
+    objectCnt: 10
 --- !u!1 &147800856
 GameObject:
   m_ObjectHideFlags: 0
@@ -30044,9 +30047,9 @@ MonoBehaviour:
     - spawnTime: 0.5
       enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
-      initState: 3
+      initState: 2
       spawnPoint: {x: 30.833, y: -0.4, z: -54.663}
-      movePoint: {x: 0, y: 0, z: 0}
+      movePoint: {x: 34.36394, y: -1.11223, z: -53.571}
       attackSpeed: 2
   - enemyDatas:
     - spawnTime: 2
@@ -31502,6 +31505,36 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6d50971a8aa3bca4ab6c057afffaf675, type: 3}
+--- !u!1 &791767175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791767176}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &791767176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791767175}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 34.36394, y: -1.1122303, z: -53.571003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &792212185
 GameObject:
   m_ObjectHideFlags: 0
@@ -43752,7 +43785,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104648978}
-  m_LocalRotation: {x: 0.34137172, y: -0.48426113, z: 0.21276537, w: 0.7769733}
+  m_LocalRotation: {x: 0.3413718, y: -0.48426113, z: 0.21276543, w: 0.77697325}
   m_LocalPosition: {x: 36.36855, y: 0.5, z: -52.311157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
