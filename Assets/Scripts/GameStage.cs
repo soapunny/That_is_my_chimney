@@ -100,15 +100,17 @@ public class GameStage : MonoBehaviour
 
                     Enemy enemy = obj.GetComponent<Enemy>();
                     enemy.enemyId = currGroup.enemyDatas[0].enemyId;
-                    
+
                     enemy.transform.LookAt(dollyCart.transform);
-                    enemy.state = currGroup.enemyDatas[0].initState;
+                    enemy.State = currGroup.enemyDatas[0].initState;
                     enemy.destPosition = currGroup.enemyDatas[0].movePoint;
                     enemy.attackSpeed = currGroup.enemyDatas[0].attackSpeed;
                     enemy.onDeathCallback = new Enemy.OnDeathCallback(KillEnemy);
                     aliveEnemys.Add(enemy);
 
                     enemy.gameObject.SetActive(true);
+                    enemy.enabled = true;
+
                     currGroup.enemyDatas.RemoveAt(0);
                 }
             }

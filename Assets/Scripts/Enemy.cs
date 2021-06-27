@@ -24,7 +24,8 @@ public class Enemy : MonoBehaviour, IHitable
     public delegate void OnDeathCallback(Enemy enemy);
 
     public Obejct_Key enemyId;
-    public EnemyState state;
+    [SerializeField]
+    private EnemyState state;
     public float attackSpeed;
     public Vector3 destPosition;
 
@@ -36,11 +37,14 @@ public class Enemy : MonoBehaviour, IHitable
     public TargetHighlight highlight;
     public Player target;
 
-    float attackTimer;
-    Animator animator;
+    protected float attackTimer;
+    protected Animator animator;
     //Rigidbody rigidBody;
-    NavMeshAgent nav;
-    Collider collider;
+    protected NavMeshAgent nav;
+
+    protected Collider collider;
+
+    public EnemyState State { get => state; set => state = value; }
 
     // Start is called before the first frame update
     private void Awake()
@@ -99,8 +103,7 @@ public class Enemy : MonoBehaviour, IHitable
             //rigidBody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
         }
     }
-
-    public void Hit()
+    public virtual void Hit()
     {
         Death();
     }

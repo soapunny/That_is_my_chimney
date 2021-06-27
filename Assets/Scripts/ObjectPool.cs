@@ -74,6 +74,7 @@ public class ObjectPool : MonoBehaviour
                 gameobj.transform.SetParent(GameManager.transform, true);
                 break;
             case Obejct_Key.BossEnemy:
+                gameobj.transform.SetParent(GameManager.transform, true);
                 break;
             case Obejct_Key.Target:
                 gameobj.transform.SetParent(FindObjectOfType<Canvas>().transform);
