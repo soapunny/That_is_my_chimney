@@ -49,8 +49,6 @@ public class GameStage : MonoBehaviour
     float eventTimer;
     private bool isStart;
 
-    private ObjectPool enemyPool;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +57,6 @@ public class GameStage : MonoBehaviour
         isStart = false;
         aliveEnemys = new List<Enemy>();
         virtualCamera.LookAt = transform;
-        enemyPool = GameObject.Find("GameManager").GetComponent<ObjectPool>();
     }
 
     // Update is called once per frame
@@ -74,8 +71,6 @@ public class GameStage : MonoBehaviour
             else
             {
                 virtualCamera.LookAt = aliveEnemys[0].transform;
-                aliveEnemys[0].targetHighlight.gameObject.SetActive(true);
-                aliveEnemys[0].targetHighlight.enabled = true;
             }
 
             if (currGroup.enemyDatas.Count == 0)
@@ -96,23 +91,25 @@ public class GameStage : MonoBehaviour
             {
                 while (currGroup.enemyDatas.Count != 0 && eventTimer > currGroup.enemyDatas[0].spawnTime)
                 {
-                    GameObject obj = enemyPool.GetObject(currGroup.enemyDatas[0].enemyId);
+                    GameObject obj = ObjectPool.Instance.GetObject(currGroup.enemyDatas[0].enemyId);
                     //if (!(obj is Enemy))
                     //{
                     //    Debug.LogError("[CastException] obj가 Enemy의 부모가 아닙니다");
                     //    break;
                     //}
-                    Enemy enemy = Instantiate<Enemy>(obj.GetComponent<Enemy>(), currGroup.enemyDatas[0].spawnPoint, Quaternion.identity);
-                    enemy.gameObject.SetActive(true);
-                    enemy.enabled = true;
+                    obj.transform.position = currGroup.enemyDatas[0].spawnPoint;
+
+                    Enemy enemy = obj.GetComponent<Enemy>();
                     enemy.enemyId = currGroup.enemyDatas[0].enemyId;
-                    Debug.Log(currGroup.enemyDatas[0].spawnPoint);
+
                     enemy.transform.LookAt(dollyCart.transform);
                     enemy.state = currGroup.enemyDatas[0].initState;
                     enemy.destPosition = currGroup.enemyDatas[0].movePoint;
                     enemy.attackSpeed = currGroup.enemyDatas[0].attackSpeed;
                     enemy.onDeathCallback = new Enemy.OnDeathCallback(KillEnemy);
                     aliveEnemys.Add(enemy);
+
+                    enemy.gameObject.SetActive(true);
 
                     currGroup.enemyDatas.RemoveAt(0);
                 }
@@ -143,7 +140,7 @@ public class GameStage : MonoBehaviour
     {
         score += 5;
         enemy.gameObject.SetActive(false);
-        enemyPool.ReleaseObject(enemy.enemyId, enemy.gameObject);
+        ObjectPool.Instance.ReleaseObject(enemy.enemyId, enemy.gameObject);
         aliveEnemys.Remove(enemy);
     }
 

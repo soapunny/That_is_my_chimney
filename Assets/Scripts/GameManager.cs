@@ -7,12 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public GameObject dollyCartObject;
     public static GameManager gameManager;
+    public Image bulletUi;
+    public int maximumBullet;
+    public Image hpUi;
+    public int maximumHp;
 
-
-    [SerializeField]
-    List<GameObject> bulletImage;
-    [SerializeField]
-    List<GameObject> hpImage;
     [SerializeField]
     GameObject crossHair;
     // Start is called before the first frame update
@@ -41,27 +40,19 @@ public class GameManager : MonoBehaviour
         CrossHairUpdate();
     }
 
-    public void EraseBulletImage(int arrayNum)
+    public void ChangeHpUi(int currHp)
     {
-        bulletImage[arrayNum].SetActive(false);
+        float fillAmount = (float)currHp / (float)maximumHp;
+        hpUi.fillAmount = fillAmount;
     }
-    public void ReloadBulletImage(int arrayNum)
-    {
-        bulletImage[arrayNum].SetActive(true);
-    }
-
-    public void MinusHpImage(int currHp)
-    {
-        hpImage[currHp].SetActive(false);
-    }
-
-    public void PlusHpImage(int currHp)
-    {
-        hpImage[currHp].SetActive(true);
-    }
-
     public void CrossHairUpdate()
     {
         crossHair.transform.position = Input.mousePosition;
+    }
+
+    public void ChangeBulletUi(int currBullet)
+    {
+        float fillAmount = (float)currBullet / (float)maximumBullet;
+        bulletUi.fillAmount = fillAmount;
     }
 }
