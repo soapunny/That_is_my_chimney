@@ -88,7 +88,7 @@ public class GameStage : MonoBehaviour
                         virtualCamera.Priority = 0;
                         Debug.Log(virtualCamera.name);
                         //virtualCamera.gameObject.SetActive(false);
-                        //cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
+
                         GameManager.gameManager.currStage = null;
                         isStart = false;
                     }
@@ -122,6 +122,8 @@ public class GameStage : MonoBehaviour
 
                         boss.gameObject.SetActive(true);
                         boss.enabled = true;
+                        if (GameManager.gameManager.currStage.name == "BossStage")
+                            cinemachineBrain.ActiveVirtualCamera.LookAt = boss.transform;
                     }
                     else
                     {

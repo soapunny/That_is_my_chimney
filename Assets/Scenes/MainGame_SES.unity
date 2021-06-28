@@ -7334,8 +7334,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135680068}
-  m_LocalRotation: {x: 0.0061623408, y: 0.8889854, z: -0.011968063, w: 0.45773768}
-  m_LocalPosition: {x: 4.1923094, y: 2.1223638, z: -5.2359734}
+  m_LocalRotation: {x: 0.008728459, y: 0.8890174, z: -0.0169621, w: 0.45747584}
+  m_LocalPosition: {x: 4.24942, y: 2.797812, z: -5.240132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 245039572}
@@ -15382,7 +15382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473344843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 19.01, y: 0, z: -3.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15792,7 +15792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4700f9f03ad19f94baf0367cb7a9c988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Width: 0
+  m_Width: 3
   m_Damping: 5
   m_MinFOV: 10
   m_MaxFOV: 60
@@ -15803,7 +15803,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503248482}
-  m_LocalRotation: {x: 0.47607106, y: 0.21318918, z: -0.12015709, w: 0.84467095}
+  m_LocalRotation: {x: 0.4760711, y: 0.21318921, z: -0.12015711, w: 0.84467095}
   m_LocalPosition: {x: 14.13, y: 2.29, z: -6.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16738,6 +16738,7 @@ MonoBehaviour:
   timeText: {fileID: 364937513}
   reloadText: {fileID: 691818897}
   gameOver: {fileID: 465444688}
+  victory: {fileID: 0}
   reLoad: {fileID: 1744937765}
   currStage: {fileID: 0}
   gameStages:
@@ -19625,9 +19626,12 @@ MonoBehaviour:
   virtualCamera: {fileID: 503248483}
   enemyGroups: []
   bossDolly: {fileID: 2048238737}
+  lastSpawnTime: 0
+  cineCamera: {fileID: 0}
   virtualCamera2: {fileID: 1317431232}
   virtualCamera3: {fileID: 1270084331}
   Sleigh: {fileID: 1703221106}
+  playerNeck: {fileID: 1442376800}
 --- !u!65 &637183293
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20251,6 +20255,7 @@ MonoBehaviour:
       movePoint: {x: 6.19, y: 0.82, z: 4.2}
       attackSpeed: 1
   bossDolly: {fileID: 2048238737}
+  lastSpawnTime: 0
 --- !u!65 &653991139
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22275,7 +22280,7 @@ MonoBehaviour:
   m_MinDuration: 0.1
   m_RandomizeChoice: 0
   m_DefaultBlend:
-    m_Style: 1
+    m_Style: 0
     m_Time: 2
     m_CustomCurve:
       serializedVersion: 2
@@ -25292,6 +25297,7 @@ MonoBehaviour:
       movePoint: {x: 0, y: 0, z: 0}
       attackSpeed: 2
   bossDolly: {fileID: 2048238737}
+  lastSpawnTime: 0
 --- !u!65 &841558434
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26286,9 +26292,9 @@ MonoBehaviour:
     roll: 0
   - position: {x: 12.78663, y: 2.6338592, z: 1.6860638}
     roll: 0
-  - position: {x: 16.717787, y: -1.9730842, z: 4.6551642}
+  - position: {x: 16.717787, y: 4.164819, z: 4.6551642}
     roll: 0
-  - position: {x: 17.598663, y: 3.0356483, z: 12.745464}
+  - position: {x: 17.598663, y: 0.5037713, z: 12.745464}
     roll: 0
   - position: {x: 18.479542, y: 3.4353056, z: 20.835764}
     roll: 0
@@ -38791,7 +38797,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270084328}
-  m_LocalRotation: {x: 0.038840503, y: 0.85573375, z: -0.064934745, w: 0.51185423}
+  m_LocalRotation: {x: 0.038840503, y: 0.85573375, z: -0.06493474, w: 0.51185423}
   m_LocalPosition: {x: 8.58, y: 0.79, z: -1.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -39086,6 +39092,7 @@ MonoBehaviour:
       movePoint: {x: 0, y: 0, z: 0}
       attackSpeed: 2
   bossDolly: {fileID: 2048238737}
+  lastSpawnTime: 0
 --- !u!65 &1281224059
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40301,7 +40308,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317431231}
-  m_LocalRotation: {x: 0.09711684, y: 0.8593386, z: -0.17771876, w: 0.46959737}
+  m_LocalRotation: {x: 0.097116835, y: 0.8593386, z: -0.17771876, w: 0.46959734}
   m_LocalPosition: {x: 1.85, y: 6.38, z: 4.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -47609,6 +47616,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441925756}
   m_Mesh: {fileID: 4300000, guid: f5437a65434aba344ba765620b5a667f, type: 3}
+--- !u!4 &1442376800 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7112086079068826275, guid: c73f11c7efd75c44ba020cdfddad630e, type: 3}
+  m_PrefabInstance: {fileID: 1771316117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1443215442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50865,7 +50877,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
+  m_CustomBlends: {fileID: 11400000, guid: 7af7d67db572668499b516b76e0166f4, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -52202,6 +52214,10 @@ PrefabInstance:
       value: Sleigh
       objectReference: {fileID: 0}
     - target: {fileID: 179674, guid: f9bd47891fe00684084c267c8afa74ce, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 179674, guid: f9bd47891fe00684084c267c8afa74ce, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -52211,7 +52227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479674, guid: f9bd47891fe00684084c267c8afa74ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.87
+      value: 10.19
       objectReference: {fileID: 0}
     - target: {fileID: 479674, guid: f9bd47891fe00684084c267c8afa74ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -52219,7 +52235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479674, guid: f9bd47891fe00684084c267c8afa74ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.3
+      value: -3.55
       objectReference: {fileID: 0}
     - target: {fileID: 479674, guid: f9bd47891fe00684084c267c8afa74ce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63635,7 +63651,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745073102}
-  m_LocalRotation: {x: -0.008887012, y: -0.39041406, z: -0.0037689074, w: 0.9205888}
+  m_LocalRotation: {x: -0.008887009, y: -0.39041403, z: -0.003768906, w: 0.9205888}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -64968,6 +64984,7 @@ MonoBehaviour:
       movePoint: {x: 23.79, y: -0.54, z: -17.998}
       attackSpeed: 3
   bossDolly: {fileID: 2048238737}
+  lastSpawnTime: 0
 --- !u!65 &1802182874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67344,7 +67361,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906677254}
-  m_LocalRotation: {x: 0.04558953, y: -0.68334603, z: 0.042827863, w: 0.7274102}
+  m_LocalRotation: {x: 0.0455895, y: -0.68334603, z: 0.04282784, w: 0.7274102}
   m_LocalPosition: {x: 18.359955, y: 1.79, z: -50.655273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -67794,6 +67811,7 @@ MonoBehaviour:
       movePoint: {x: 0, y: 0, z: 0}
       attackSpeed: 3
   bossDolly: {fileID: 2048238737}
+  lastSpawnTime: 0
 --- !u!65 &1928207149
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74660,7 +74678,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048238734}
-  m_LocalRotation: {x: -0.094944365, y: 0.72518104, z: 0.10210963, w: 0.6742934}
+  m_LocalRotation: {x: 0.025421208, y: 0.73182416, z: -0.027339699, w: 0.6804702}
   m_LocalPosition: {x: 6.255946, y: 2.6901898, z: -4.884924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
