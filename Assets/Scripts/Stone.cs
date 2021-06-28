@@ -20,6 +20,7 @@ public class Stone : MonoBehaviour, IHitable
     public Player target;
     private bool isMove;
     private float destroyTimer;
+    //private float moveTimer;
     [SerializeField]
     ParticleSystem particle;
     // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class Stone : MonoBehaviour, IHitable
         stoneCollider = GetComponent<MeshCollider>();
         isMove = false;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        //moveTimer = 0.0f;
     }
 
     // Update is called once per frame
@@ -42,16 +44,21 @@ public class Stone : MonoBehaviour, IHitable
         if (isMove && stoneStatus == StoneStatus.Stone)
         {
             Move();
+            //moveTimer += Time.deltaTime;
+            //if(moveTimer >= 3.0f)
+            //{
+            //    Destroyed();
+            //}
+            PlayerCollision();
         }
-        PlayerCollision();
         if(stoneStatus == StoneStatus.Destroy)
         {
-            destroyTimer += Time.deltaTime;
-            if(destroyTimer >= 2.0f)
-            {
-                destroyTimer = 0.0f;
-                gameObject.SetActive(false);
-            }
+            //destroyTimer += Time.deltaTime;
+            //if(destroyTimer >= 2.0f)
+            //{
+            //    destroyTimer = 0.0f;
+            //    gameObject.SetActive(false);
+            //}
         }
     }
     public void Hit()   // 총에 맞았을 때 상태 구현
@@ -63,6 +70,8 @@ public class Stone : MonoBehaviour, IHitable
     public void Destroyed()
     {
         if (stoneStatus == StoneStatus.Destroy) return;
+        //moveTimer = 0.0f;
+        destroyTimer = 0.0f;
         stoneStatus = StoneStatus.Destroy;
         stoneMeshRenderer.enabled = false;
         stoneCollider.enabled = false;
@@ -71,12 +80,12 @@ public class Stone : MonoBehaviour, IHitable
 
     private void PlayerCollision()
     {
-        if (gameObject.transform.position == Camera.main.transform.position)
+        
+        if (Vector3.Distance((gameObject.transform.position), (Camera.main.transform.position)) <= 5)
         {
             if (stoneStatus == StoneStatus.Destroy) return;
             target.GetDamage();
             stoneDurability = 0;
-            stoneStatus = StoneStatus.Destroy;
             isMove = false;
             Destroyed();
         }
@@ -84,7 +93,8 @@ public class Stone : MonoBehaviour, IHitable
 
     public void IsThrow(Vector3 armPosition)
     {
-        gameObject.SetActive(true);
+        stoneStatus = StoneStatus.Stone;
+        stoneDurability = 3;
         gameObject.transform.position = armPosition;
         stoneMeshRenderer.enabled = true;
         isMove = true;

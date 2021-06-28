@@ -31,23 +31,23 @@ public class GameStage : MonoBehaviour
     public int score;
     public float clearTime;
     [SerializeField]
-    CinemachineVirtualCamera virtualCamera;
+    protected CinemachineVirtualCamera virtualCamera;
 
-    Queue<EnemyGroup> readyEnemyGroups;
-    EnemyGroup currGroup;
-    List<Enemy> aliveEnemys;
+    protected Queue<EnemyGroup> readyEnemyGroups;
+    protected EnemyGroup currGroup;
+    protected List<Enemy> aliveEnemys;
 
     [Header("Stage Enemys")]
     [SerializeField]
-    List<EnemyGroup> enemyGroups;
-    CinemachineDollyCart dollyCart;
-    CinemachineBrain cinemachineBrain;
+    protected List<EnemyGroup> enemyGroups;
+    protected CinemachineDollyCart dollyCart;
+    protected CinemachineBrain cinemachineBrain;
 
     [SerializeField]
-    CinemachineDollyCart bossDolly;
+    protected CinemachineDollyCart bossDolly;
 
-    float eventTimer;
-    private bool isStart;
+    protected float eventTimer;
+    protected private bool isStart;
 
     // Start is called before the first frame update
     void Start()

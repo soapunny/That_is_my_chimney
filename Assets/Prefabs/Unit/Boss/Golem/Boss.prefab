@@ -290,6 +290,7 @@ MonoBehaviour:
   highlight: {fileID: 5385722846397964077, guid: 726b8094e982c9648be88d4efedb85a7, type: 3}
   target: {fileID: 0}
   stonePrefab: {fileID: 1094290301253433077, guid: f3cc05f3bef7e73429f3ca93e2d1b40e, type: 3}
+  handPosition: {fileID: 8501588790354035849}
 --- !u!1 &8501588790447114063
 GameObject:
   m_ObjectHideFlags: 0

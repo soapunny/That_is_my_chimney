@@ -25,6 +25,7 @@ public class Boss : Enemy
     private GameObject mainCamera;
     private GameObject stone;
     public GameObject stonePrefab;
+    public GameObject handPosition;
 
     public BossState BossState { get => bossState; set => bossState = value; }
 
@@ -65,13 +66,13 @@ public class Boss : Enemy
     {
         if (bossState == BossState.Death) return;
 
-        if(bossState != BossState.RockMode)
+        //if(bossState != BossState.RockMode)
             transform.LookAt(mainCamera.transform.position);
-        else
+        //else
             introTimer += Time.deltaTime;
         if (introTimer >= 3f && bossState == BossState.RockMode)
         {
-            rigidbody.AddForce(new Vector3(-500f, velocity, -500f));
+            rigidbody.AddForce(new Vector3(-1000f, velocity, -1000f));
             animator.SetInteger("JumpState", 1);
             bossState = BossState.JumpingUp;
         }
@@ -84,8 +85,6 @@ public class Boss : Enemy
 
         if (introTimer >= startTime)
         {
-            if (!nav.enabled)
-                nav.enabled = true;
             Vector3 pos = Input.mousePosition;
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -109,14 +108,14 @@ public class Boss : Enemy
             if (attackTimer <= 0f)
             {
                 animator.SetTrigger("Attack");
-                Attack();
                 attackTimer = 5f;
             }
         }
     }
-    void Attack()
+
+    public void Attack()
     {
-        stone.GetComponent<Stone>().IsThrow(transform.position);
+        stone.GetComponent<Stone>().IsThrow(handPosition.transform.position);
         mainCamera.transform.LookAt(stone.transform);
         //target.GetDamage();
         //EffectManager.Instance.HeartBeat(0.5f);
@@ -126,10 +125,11 @@ public class Boss : Enemy
     override
     public void Hit()
     {
-        if (bossState == BossState.Death || bossState != BossState.Idle) return;
+        if (bossState != BossState.Idle) return;
 
         //highlight.gameObject.SetActive(false);
         animator.SetTrigger("Hit");
+        bossState = BossState.GetHit;
         if (--hp <= 0)
         {
             Death();
@@ -137,11 +137,19 @@ public class Boss : Enemy
         //bossState = BossState.Idle;
         //Destroy(gameObject, 1.0f);
     }
+
+    public void InitState()
+    {
+        bossState = BossState.Idle;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(bossState == BossState.Falling)
         {
             rigidbody.isKinematic = true;
+            if (!nav.enabled)
+                nav.enabled = true;
             stone = Instantiate(stonePrefab) as GameObject;
             stone.transform.SetParent(transform, false);
             bossState = BossState.Idle;
