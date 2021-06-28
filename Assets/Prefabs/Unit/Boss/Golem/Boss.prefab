@@ -168,7 +168,6 @@ GameObject:
   - component: {fileID: 8501588790440735195}
   - component: {fileID: 2472030687581117022}
   - component: {fileID: 8501588790440735197}
-  - component: {fileID: 8501588790440735194}
   - component: {fileID: 8501588790440735199}
   - component: {fileID: 8501588790440735196}
   m_Layer: 7
@@ -209,7 +208,13 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'Hips'\n\tTransform 'Lower_Arm_L'\n\tTransform
+    'Upper_Arm_R'\n\tTransform 'Lower_Reg_R'\n\tTransform 'Lower_Leg_L'\n\tTransform
+    'Foot_R'\n\tTransform 'Head'\n\tTransform 'Spine'\n\tTransform 'Upper_Leg_L'\n\tTransform
+    'Lower_Arm_R'\n\tand more ...\n\tFrom animation clip 'RockMode'\n\tFrom animation
+    clip 'JumpingUp'\n\tFrom animation clip 'Falling'\n\tFrom animation clip 'Roaring'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -221,7 +226,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8501588790440735198}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 2
   m_Height: 2
@@ -243,20 +248,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &8501588790440735194
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8501588790440735198}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
 --- !u!195 &8501588790440735199
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -298,7 +289,7 @@ MonoBehaviour:
   hp: 20
   highlight: {fileID: 5385722846397964077, guid: 726b8094e982c9648be88d4efedb85a7, type: 3}
   target: {fileID: 0}
-  stonePrefab: {fileID: 2446678721173288050, guid: 1b7b952698649844682fa1370dbcad40, type: 3}
+  stonePrefab: {fileID: 1094290301253433077, guid: f3cc05f3bef7e73429f3ca93e2d1b40e, type: 3}
 --- !u!1 &8501588790447114063
 GameObject:
   m_ObjectHideFlags: 0

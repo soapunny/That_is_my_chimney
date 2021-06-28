@@ -41,6 +41,7 @@ public class Boss : Enemy
         nav.enabled = false;
         initPos = transform.position;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        collider = GetComponent<CapsuleCollider>();
         dollyCart = GameObject.Find("BossDollyCart");
         dollyCart.SetActive(false);
     }
@@ -120,7 +121,7 @@ public class Boss : Enemy
     }
     void Attack()
     {
-        stone.GetComponent<Stone>().IsThrow(new Vector3(0, 0, 0));
+        stone.GetComponent<Stone>().IsThrow(transform.position);
         mainCamera.transform.LookAt(stone.transform);
         //target.GetDamage();
         //EffectManager.Instance.HeartBeat(0.5f);
