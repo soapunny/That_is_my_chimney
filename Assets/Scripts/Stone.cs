@@ -25,7 +25,7 @@ public class Stone : MonoBehaviour, IHitable
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
         stoneMeshRenderer = GetComponent<MeshRenderer>();
         stoneCollider = GetComponent<MeshCollider>();
         isMove = false;

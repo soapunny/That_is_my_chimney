@@ -118,7 +118,7 @@ public class Boss : Enemy
     {
         stone = Instantiate(stonePrefab) as GameObject;
         stone.transform.SetParent(transform, false);
-        stone.GetComponent<Stone>().IsThrow();
+        stone.GetComponent<Stone>().IsThrow(new Vector3 (0, 0, 0));
         target.GetDamage();
         EffectManager.Instance.HeartBeat(0.5f);
         EffectManager.Instance.CreateEffect(EffectType.ShatteredWindow, 1.0f);
