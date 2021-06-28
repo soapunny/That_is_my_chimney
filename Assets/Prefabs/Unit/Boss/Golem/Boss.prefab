@@ -299,6 +299,7 @@ MonoBehaviour:
   highlight: {fileID: 5385722846397964077, guid: 726b8094e982c9648be88d4efedb85a7, type: 3}
   target: {fileID: 0}
   objectKey: 1
+  stonePrefab: {fileID: 2446678721173288050, guid: 1b7b952698649844682fa1370dbcad40, type: 3}
 --- !u!1 &8501588790447114063
 GameObject:
   m_ObjectHideFlags: 0

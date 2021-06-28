@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
     public void GetDamage()
     {
-        playerHp--;
+        //playerHp--;
         GameManager.gameManager.ChangeHpUi(playerHp);
         if (state == PlayerState.Alive && playerHp <= 0)
         {
