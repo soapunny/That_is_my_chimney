@@ -184,4 +184,4 @@ MonoBehaviour:
   toOuterColor: {r: 0.6431373, g: 0, b: 0, a: 1}
   fromInnerColor: {r: 0.3443396, g: 1, b: 0.35852048, a: 1}
   toInnerColor: {r: 1, g: 0.3726415, b: 0.3726415, a: 1}
-  limitTime: 1
+  limitTime: 2
