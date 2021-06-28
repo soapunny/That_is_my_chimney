@@ -46,7 +46,6 @@ public class GameStage : MonoBehaviour
     [SerializeField]
     CinemachineDollyCart bossDolly;
 
-    bool isOnce;
     float eventTimer;
     private bool isStart;
 
@@ -59,7 +58,6 @@ public class GameStage : MonoBehaviour
         aliveEnemys = new List<Enemy>();
         virtualCamera.LookAt = transform;
         clearTime = 0.0f;
-        isOnce = false;
     }
 
     // Update is called once per frame
@@ -150,9 +148,8 @@ public class GameStage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         dollyCart = other.GetComponent<CinemachineDollyCart>();
-        if (dollyCart && !isOnce)
+        if (dollyCart)
         {
-            isOnce = true;
             GameManager.gameManager.currStage = this;
             dollyCart.enabled = false;
             if(GameManager.gameManager.currStage.name == "BossStage")

@@ -12,7 +12,6 @@ public class Stone : MonoBehaviour, IHitable
 {
     private GameObject stoneObject;
     public GameObject stoneSocket;
-    public GameObject particle;
     public MeshRenderer stoneMeshRenderer;
     public MeshCollider stoneCollider;
     public int stoneDurability;
@@ -20,9 +19,13 @@ public class Stone : MonoBehaviour, IHitable
     public float moveSpeed;
     public Player target;
     private bool isMove;
+    private float destroyTimer;
+    [SerializeField]
+    ParticleSystem particle;
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.SetActive(true);
         stoneMeshRenderer = GetComponent<MeshRenderer>();
         stoneCollider = GetComponent<MeshCollider>();
         isMove = false;
@@ -41,6 +44,15 @@ public class Stone : MonoBehaviour, IHitable
             Move();
         }
         PlayerCollision();
+        if(stoneStatus == StoneStatus.Destroy)
+        {
+            destroyTimer += Time.deltaTime;
+            if(destroyTimer >= 2.0f)
+            {
+                destroyTimer = 0.0f;
+                gameObject.SetActive(false);
+            }
+        }
     }
     public void Hit()   // 총에 맞았을 때 상태 구현
     {
@@ -54,8 +66,7 @@ public class Stone : MonoBehaviour, IHitable
         stoneStatus = StoneStatus.Destroy;
         stoneMeshRenderer.enabled = false;
         stoneCollider.enabled = false;
-        particle.SetActive(true);
-        Destroy(gameObject, 2.0f);
+        particle.Play();
     }
 
     private void PlayerCollision()
@@ -70,12 +81,20 @@ public class Stone : MonoBehaviour, IHitable
             Destroyed();
         }
     }
-    public void IsThrow()
+
+    public void IsThrow(Vector3 armPosition)
     {
+        gameObject.SetActive(true);
+        gameObject.transform.position = armPosition;
+        stoneMeshRenderer.enabled = true;
         isMove = true;
     }
     private void Move()
     {
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, Camera.main.transform.position, moveSpeed * Time.deltaTime);
+        if(!stoneCollider.enabled)
+        {
+            stoneCollider.enabled = true;
+        }
     }
 }

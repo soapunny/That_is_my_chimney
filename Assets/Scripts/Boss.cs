@@ -120,7 +120,7 @@ public class Boss : Enemy
     }
     void Attack()
     {
-        stone.GetComponent<Stone>().IsThrow();
+        stone.GetComponent<Stone>().IsThrow(new Vector3(0, 0, 0));
         mainCamera.transform.LookAt(stone.transform);
         //target.GetDamage();
         //EffectManager.Instance.HeartBeat(0.5f);
