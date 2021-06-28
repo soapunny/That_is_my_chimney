@@ -69,7 +69,7 @@ public class Boss : Enemy
             transform.LookAt(mainCamera.transform.position);
         else
             introTimer += Time.deltaTime;
-        if (introTimer >= 1f && bossState == BossState.RockMode)
+        if (introTimer >= 3f && bossState == BossState.RockMode)
         {
             rigidbody.AddForce(new Vector3(-500f, velocity, -500f));
             animator.SetInteger("JumpState", 1);
@@ -103,20 +103,15 @@ public class Boss : Enemy
             }
         }
 
-        if (attackTimer <= 0f)
-        {
-            if (bossState != BossState.Idle)
-            {
-                bossState = BossState.Idle;
-            }
-            animator.SetTrigger("Attack");
-            Attack();
-            attackTimer = 5f;
-        }
-
         if (bossState == BossState.Idle)
         {
             attackTimer -= Time.deltaTime * attackSpeed;
+            if (attackTimer <= 0f)
+            {
+                animator.SetTrigger("Attack");
+                Attack();
+                attackTimer = 5f;
+            }
         }
     }
     void Attack()
@@ -131,15 +126,15 @@ public class Boss : Enemy
     override
     public void Hit()
     {
-        if (bossState == BossState.Death) return;
+        if (bossState == BossState.Death || bossState != BossState.Idle) return;
 
         //highlight.gameObject.SetActive(false);
         animator.SetTrigger("Hit");
-        hp--;
-        if (hp <= 0)
-            bossState = BossState.Death;
+        if (--hp <= 0)
+        {
+            Death();
+        }
         //bossState = BossState.Idle;
-        //onDeathCallback(this);
         //Destroy(gameObject, 1.0f);
     }
     private void OnCollisionEnter(Collision collision)
