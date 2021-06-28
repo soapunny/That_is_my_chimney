@@ -67,6 +67,7 @@ public class Stone : MonoBehaviour, IHitable
             stoneDurability = 0;
             stoneStatus = StoneStatus.Destroy;
             isMove = false;
+            Destroyed();
         }
     }
     public void IsThrow()
