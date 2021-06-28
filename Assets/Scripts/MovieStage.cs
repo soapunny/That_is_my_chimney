@@ -14,7 +14,6 @@ public enum MovieSceneState
 public class MovieStage : GameStage
 {
 
-    [SerializeField]
     protected CinemachineClearShot cineCamera;
     [SerializeField]
     protected CinemachineVirtualCamera virtualCamera2;
