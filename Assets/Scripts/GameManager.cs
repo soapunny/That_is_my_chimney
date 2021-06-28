@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI reloadText;
 
     public GameObject gameOver;
+    public GameObject victory;
     public GameObject reLoad;
 
     int score;
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            victory.SetActive(true);
+        }
+
         // Score, Clear Time Text Update
         score = 0;
         elapsedTime = 0;
@@ -88,6 +94,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Victory()
+    {
+        victory.SetActive(true);
+    }
+
+    public void Title()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

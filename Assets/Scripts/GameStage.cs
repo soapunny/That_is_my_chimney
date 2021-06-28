@@ -49,6 +49,8 @@ public class GameStage : MonoBehaviour
     float eventTimer;
     private bool isStart;
 
+    public float lastSpawnTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class GameStage : MonoBehaviour
         aliveEnemys = new List<Enemy>();
         virtualCamera.LookAt = transform;
         clearTime = 0.0f;
+        lastSpawnTime = GetLastSpawnTime();
     }
 
     // Update is called once per frame
@@ -201,5 +204,18 @@ public class GameStage : MonoBehaviour
     public void GameOver()
     {
         isStart = false;
+    }
+
+    float GetLastSpawnTime()
+    {
+        float time = 0;
+        foreach (var datas in enemyGroups)
+        {
+            foreach (var data in datas.enemyDatas)
+            {
+                time += data.spawnTime;
+            }
+        }
+        return time;
     }
 }
