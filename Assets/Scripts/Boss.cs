@@ -25,6 +25,7 @@ public class Boss : Enemy
     private GameObject mainCamera;
     private GameObject stone;
     public GameObject stonePrefab;
+    public GameObject handPosition;
 
     public BossState BossState { get => bossState; set => bossState = value; }
 
@@ -121,7 +122,7 @@ public class Boss : Enemy
     }
     void Attack()
     {
-        stone.GetComponent<Stone>().IsThrow(transform.position);
+        stone.GetComponent<Stone>().IsThrow(handPosition.transform.position);
         mainCamera.transform.LookAt(stone.transform);
         //target.GetDamage();
         //EffectManager.Instance.HeartBeat(0.5f);
