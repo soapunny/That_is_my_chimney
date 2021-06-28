@@ -43,6 +43,10 @@ public class GameStage : MonoBehaviour
     CinemachineDollyCart dollyCart;
     CinemachineBrain cinemachineBrain;
 
+    [SerializeField]
+    CinemachineDollyCart bossDolly;
+
+    bool isOnce;
     float eventTimer;
     private bool isStart;
 
@@ -55,6 +59,7 @@ public class GameStage : MonoBehaviour
         aliveEnemys = new List<Enemy>();
         virtualCamera.LookAt = transform;
         clearTime = 0.0f;
+        isOnce = false;
     }
 
     // Update is called once per frame
@@ -80,9 +85,11 @@ public class GameStage : MonoBehaviour
                         // empty wait enemys
                         dollyCart.enabled = true;
                         virtualCamera.Priority = 0;
+                        Debug.Log(virtualCamera.name);
+                        //virtualCamera.gameObject.SetActive(false);
                         //cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
-                        isStart = false;
                         GameManager.gameManager.currStage = null;
+                        isStart = false;
                     }
                 }
             }
@@ -123,13 +130,19 @@ public class GameStage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         dollyCart = other.GetComponent<CinemachineDollyCart>();
-        if (dollyCart)
+        if (dollyCart && !isOnce)
         {
+            isOnce = true;
             GameManager.gameManager.currStage = this;
+            dollyCart.enabled = false;
+            if(GameManager.gameManager.currStage.name == "BossStage")
+            {
+                dollyCart = bossDolly;
+            }
             //cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             //cinemachineBrain.ActiveVirtualCamera.Follow = null;
-            dollyCart.enabled = false;
             virtualCamera.Priority = 20;
+            Debug.Log(virtualCamera.name);
             readyEnemyGroups = new Queue<EnemyGroup>(enemyGroups);
             isStart = NextEnemyGroup();
             clearTime = 0;
