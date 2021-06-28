@@ -11,20 +11,22 @@ public enum BossState
 
 public class Boss : Enemy
 {
-    public delegate void OnDeathCallback(Boss boss);
+    public delegate void OnBossDeathCallback(Boss boss);
+    public OnBossDeathCallback onBossDeathCallback;
 
     private float introTimer = 0f;
     private float startTime = 5f;
     private float velocity = 3000f;
 
     private BossState bossState;
-    public Obejct_Key objectKey;
     private Vector3 initPos;
     Rigidbody rigidbody;
     GameObject dollyCart;
     private GameObject mainCamera;
     private GameObject stone;
     public GameObject stonePrefab;
+
+    public BossState BossState { get => bossState; set => bossState = value; }
 
     //public delegate void OnDeathCallback(Enemy enemy);
 
@@ -53,6 +55,7 @@ public class Boss : Enemy
         bossState = BossState.RockMode;
         highlight.gameObject.SetActive(true);
         highlight.limitTime = attackSpeed;
+        collider.enabled = true;
         Debug.Log(gameObject.name);
     }
 
@@ -117,14 +120,11 @@ public class Boss : Enemy
     }
     void Attack()
     {
-        rigidbody.isKinematic = true;
-        stone = Instantiate(stonePrefab) as GameObject;
-        stone.transform.SetParent(transform, false);
         stone.GetComponent<Stone>().IsThrow();
         mainCamera.transform.LookAt(stone.transform);
         //target.GetDamage();
-        EffectManager.Instance.HeartBeat(0.5f);
-        EffectManager.Instance.CreateEffect(EffectType.ShatteredWindow, 1.0f);
+        //EffectManager.Instance.HeartBeat(0.5f);
+        //EffectManager.Instance.CreateEffect(EffectType.ShatteredWindow, 1.0f);
     }
 
     override
@@ -134,7 +134,10 @@ public class Boss : Enemy
 
         //highlight.gameObject.SetActive(false);
         animator.SetTrigger("Hit");
-        bossState = BossState.Death;
+        hp--;
+        if (hp <= 0)
+            bossState = BossState.Death;
+        //bossState = BossState.Idle;
         //onDeathCallback(this);
         //Destroy(gameObject, 1.0f);
     }
@@ -142,6 +145,9 @@ public class Boss : Enemy
     {
         if(bossState == BossState.Falling)
         {
+            rigidbody.isKinematic = true;
+            stone = Instantiate(stonePrefab) as GameObject;
+            stone.transform.SetParent(transform, false);
             bossState = BossState.Idle;
             animator.SetInteger("JumpState", 0);
             dollyCart.SetActive(true);
@@ -153,5 +159,17 @@ public class Boss : Enemy
         gameObject.SetActive(false);
         EffectManager.Instance.CreateEffect(EffectType.NinjaDisappear, 1.5f, transform.position);
         ObjectPool.Instance.ReleaseObject(enemyId, gameObject);
+    }
+    void Death()
+    {
+        if (bossState == BossState.Death) return;
+
+        animator.SetTrigger("Die");
+        nav.ResetPath();
+        collider.enabled = false;
+        highlight.gameObject.SetActive(false);
+        bossState = BossState.Death;
+        onBossDeathCallback(this);
+        //Destroy(gameObject, 1.0f);
     }
 }

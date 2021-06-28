@@ -43,6 +43,10 @@ public class GameStage : MonoBehaviour
     CinemachineDollyCart dollyCart;
     CinemachineBrain cinemachineBrain;
 
+    [SerializeField]
+    CinemachineDollyCart bossDolly;
+
+    bool isOnce;
     float eventTimer;
     private bool isStart;
 
@@ -55,6 +59,7 @@ public class GameStage : MonoBehaviour
         aliveEnemys = new List<Enemy>();
         virtualCamera.LookAt = transform;
         clearTime = 0.0f;
+        isOnce = false;
     }
 
     // Update is called once per frame
@@ -80,9 +85,11 @@ public class GameStage : MonoBehaviour
                         // empty wait enemys
                         dollyCart.enabled = true;
                         virtualCamera.Priority = 0;
+                        Debug.Log(virtualCamera.name);
+                        //virtualCamera.gameObject.SetActive(false);
                         //cinemachineBrain.ActiveVirtualCamera.LookAt = dollyCart.transform;
-                        isStart = false;
                         GameManager.gameManager.currStage = null;
+                        isStart = false;
                     }
                 }
             }
@@ -98,18 +105,38 @@ public class GameStage : MonoBehaviour
                     //}
                     obj.transform.position = currGroup.enemyDatas[0].spawnPoint;
 
-                    Enemy enemy = obj.GetComponent<Enemy>();
-                    enemy.enemyId = currGroup.enemyDatas[0].enemyId;
+                    Enemy enemy;
+                    if (currGroup.enemyDatas[0].enemyId == Obejct_Key.BossEnemy)
+                    {
+                        enemy = obj.GetComponent<Boss>();
+                        Boss boss = (enemy as Boss);
+                        boss.onBossDeathCallback = new Boss.OnBossDeathCallback(KillBoss);
+                        boss.BossState = BossState.RockMode;
+                        boss.enemyId = currGroup.enemyDatas[0].enemyId;
 
-                    enemy.transform.LookAt(dollyCart.transform);
-                    enemy.State = currGroup.enemyDatas[0].initState;
-                    enemy.destPosition = currGroup.enemyDatas[0].movePoint;
-                    enemy.attackSpeed = currGroup.enemyDatas[0].attackSpeed;
-                    enemy.onDeathCallback = new Enemy.OnDeathCallback(KillEnemy);
-                    aliveEnemys.Add(enemy);
+                        boss.transform.LookAt(dollyCart.transform);
+                        boss.destPosition = currGroup.enemyDatas[0].movePoint;
+                        boss.attackSpeed = currGroup.enemyDatas[0].attackSpeed;
+                        aliveEnemys.Add(boss);
 
-                    enemy.gameObject.SetActive(true);
-                    enemy.enabled = true;
+                        boss.gameObject.SetActive(true);
+                        boss.enabled = true;
+                    }
+                    else
+                    {
+                        enemy = obj.GetComponent<Enemy>();
+                        enemy.onDeathCallback = new Enemy.OnDeathCallback(KillEnemy);
+                        enemy.State = currGroup.enemyDatas[0].initState;
+                        enemy.enemyId = currGroup.enemyDatas[0].enemyId;
+
+                        enemy.transform.LookAt(dollyCart.transform);
+                        enemy.destPosition = currGroup.enemyDatas[0].movePoint;
+                        enemy.attackSpeed = currGroup.enemyDatas[0].attackSpeed;
+                        aliveEnemys.Add(enemy);
+
+                        enemy.gameObject.SetActive(true);
+                        enemy.enabled = true;
+                    }
 
                     currGroup.enemyDatas.RemoveAt(0);
                 }
@@ -123,13 +150,19 @@ public class GameStage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         dollyCart = other.GetComponent<CinemachineDollyCart>();
-        if (dollyCart)
+        if (dollyCart && !isOnce)
         {
+            isOnce = true;
             GameManager.gameManager.currStage = this;
+            dollyCart.enabled = false;
+            if(GameManager.gameManager.currStage.name == "BossStage")
+            {
+                dollyCart = bossDolly;
+            }
             //cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             //cinemachineBrain.ActiveVirtualCamera.Follow = null;
-            dollyCart.enabled = false;
             virtualCamera.Priority = 20;
+            Debug.Log(virtualCamera.name);
             readyEnemyGroups = new Queue<EnemyGroup>(enemyGroups);
             isStart = NextEnemyGroup();
             clearTime = 0;
@@ -143,6 +176,14 @@ public class GameStage : MonoBehaviour
         //enemy.gameObject.SetActive(false);
         //ObjectPool.Instance.ReleaseObject(enemy.enemyId, enemy.gameObject);
         aliveEnemys.Remove(enemy);
+    }
+
+    public void KillBoss(Boss boss)
+    {
+        score += 20;
+        //enemy.gameObject.SetActive(false);
+        //ObjectPool.Instance.ReleaseObject(enemy.enemyId, enemy.gameObject);
+        aliveEnemys.Remove(boss);
     }
 
     bool NextEnemyGroup()

@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour, IHitable
     public Vector3 destPosition;
 
     [SerializeField]
-    int hp;
+    protected int hp;
 
     public OnDeathCallback onDeathCallback;
 

@@ -69,18 +69,20 @@ public class ObjectPool : MonoBehaviour
         {
             case Obejct_Key.NormalEnemy:
                 gameobj.transform.SetParent(GameManager.transform, true);
+                gameobj.GetComponent<Enemy>().enabled = false;
                 break;
             case Obejct_Key.BossGuard:
                 gameobj.transform.SetParent(GameManager.transform, true);
+                gameobj.GetComponent<Enemy>().enabled = false;
                 break;
             case Obejct_Key.BossEnemy:
                 gameobj.transform.SetParent(GameManager.transform, true);
+                gameobj.GetComponent<Boss>().enabled = false;
                 break;
             case Obejct_Key.Target:
                 gameobj.transform.SetParent(FindObjectOfType<Canvas>().transform);
                 break;
         }
-        //gameobj.enabled = false;
 
         return gameobj;
     }
