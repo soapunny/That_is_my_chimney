@@ -65,6 +65,7 @@ public class Enemy : MonoBehaviour, IHitable
         attackTimer = attackSpeed;
         highlight.limitTime = attackSpeed;
         highlight.gameObject.SetActive(true);
+        highlight.TargetOn = false;
         collider.enabled = true;
     }
 
@@ -98,7 +99,7 @@ public class Enemy : MonoBehaviour, IHitable
             state = EnemyState.Idle;
             Vector3 dir = (Camera.main.transform.position - transform.position).normalized;
             nav.SetDestination(transform.position + dir * 0.1f);
-            highlight.isOn = true;
+            highlight.TargetOn = true;
             //animator.SetBool("FinishMove", true);
             //rigidBody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
         }

@@ -17,6 +17,7 @@ public class Stone : MonoBehaviour, IHitable
     public int stoneDurability;
     public StoneStatus stoneStatus;
     public float moveSpeed;
+    public TargetHighlight highlight;
     public Player target;
     private bool isMove;
     private float destroyTimer;
@@ -31,6 +32,7 @@ public class Stone : MonoBehaviour, IHitable
         stoneCollider = GetComponent<MeshCollider>();
         isMove = false;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        highlight.TargetOn = false;
         //moveTimer = 0.0f;
     }
 
@@ -76,6 +78,7 @@ public class Stone : MonoBehaviour, IHitable
         stoneMeshRenderer.enabled = false;
         stoneCollider.enabled = false;
         particle.Play();
+        highlight.gameObject.SetActive(false);
     }
 
     private void PlayerCollision()
@@ -98,6 +101,9 @@ public class Stone : MonoBehaviour, IHitable
         gameObject.transform.position = armPosition;
         stoneMeshRenderer.enabled = true;
         isMove = true;
+        highlight.gameObject.SetActive(true);
+        highlight.limitTime = Vector3.Distance(gameObject.transform.position, Camera.main.transform.position);
+        highlight.TargetOn = true;
     }
     private void Move()
     {
@@ -106,5 +112,6 @@ public class Stone : MonoBehaviour, IHitable
         {
             stoneCollider.enabled = true;
         }
+        highlight.elapsedTime = highlight.limitTime - Vector3.Distance(gameObject.transform.position, Camera.main.transform.position);
     }
 }

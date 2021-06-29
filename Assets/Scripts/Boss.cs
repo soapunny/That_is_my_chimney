@@ -44,6 +44,7 @@ public class Boss : Enemy
         collider = GetComponent<CapsuleCollider>();
         dollyCart = GameObject.Find("BossDollyCart");
         dollyCart.SetActive(false);
+        highlight.gameObject.SetActive(false);
     }
 
     void OnEnable()
@@ -53,9 +54,9 @@ public class Boss : Enemy
             //nav.SetDestination(destPosition);
         }
         bossState = BossState.RockMode;
-        highlight.gameObject.SetActive(true);
         highlight.limitTime = attackSpeed;
         collider.enabled = true;
+        highlight.TargetOn = false;
     }
 
     // Update is called once per frame
@@ -87,6 +88,7 @@ public class Boss : Enemy
         if (introTimer >= startTime)
         {
             Vector3 pos = Input.mousePosition;
+            
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Ray ray;
@@ -105,11 +107,14 @@ public class Boss : Enemy
 
         if (bossState == BossState.Idle)
         {
+            if (!highlight.TargetOn) highlight.TargetOn = true;
+
             attackTimer -= Time.deltaTime * attackSpeed;
             if (attackTimer <= 0f)
             {
                 animator.SetTrigger("Attack");
                 bossState = BossState.Attack;
+                highlight.TargetOn = false;
             }
         }
     }
@@ -143,6 +148,8 @@ public class Boss : Enemy
     public void InitState()
     {
         bossState = BossState.Idle;
+        highlight.gameObject.SetActive(true);
+        highlight.TargetOn = true;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -15,9 +15,32 @@ public class TargetHighlight : MonoBehaviour
     public Color fromInnerColor;
     public Color toInnerColor;
 
-    float elapsedTime;
+    [Header("Deactive Color")]
+    public Color DeactiveOuterColor;
+    public Color DeactiveInnerColor;
+
+    public float elapsedTime;
     public float limitTime;
-    public bool isOn;
+    public bool isTimer;
+    bool isOn;
+
+    public bool TargetOn
+    { 
+        get 
+        { 
+            return isOn;
+        }
+
+		set
+		{
+            isOn = value;
+            if (value)
+			{
+                elapsedTime = 0f;
+			}
+		}
+    }
+
 
     // Start is called before the first frame update
     void OnEnable()
@@ -33,9 +56,17 @@ public class TargetHighlight : MonoBehaviour
     {
         transform.LookAt(UICamera.Instance.transform);
 
-        outerCircle.color = Color.Lerp(fromOuterColor, toOuterColor, elapsedTime / limitTime);
-        innerCircle.color = Color.Lerp(fromInnerColor, toInnerColor, elapsedTime / limitTime);
+        if (isOn)
+        {
+            outerCircle.color = Color.Lerp(fromOuterColor, toOuterColor, elapsedTime / limitTime);
+            innerCircle.color = Color.Lerp(fromInnerColor, toInnerColor, elapsedTime / limitTime);
+        }
+        else
+		{
+            outerCircle.color = DeactiveOuterColor;
+            innerCircle.color = DeactiveInnerColor;
+        }
         innerCircle.transform.Rotate(new Vector3(0.0f, 0.0f, 360 * Time.deltaTime));
-        if (isOn) elapsedTime += Time.deltaTime;
+        if (isTimer && isOn) elapsedTime += Time.deltaTime;
     }
 }
