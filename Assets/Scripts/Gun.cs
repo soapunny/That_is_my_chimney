@@ -55,6 +55,7 @@ public class Gun : MonoBehaviour
         // Raycast贸府肺 利 眉仿 皑家贸府
 
         magAmmo--;
+        GameManager.gameManager.PlayShotSound();
         GameManager.gameManager.ChangeBulletUi(magAmmo);
         RaycastHit hitInfo;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

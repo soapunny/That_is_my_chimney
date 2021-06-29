@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     GameObject crossHair;
     // Start is called before the first frame update
 
+    public AudioSource bgmPlayer;
+    public AudioSource gunSound;
     private void Awake()
     {
         Cursor.visible = false;
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         dollyCartObject = GetComponent<GameObject>();
+        bgmPlayer.Play();
     }
 
     // Update is called once per frame
@@ -128,5 +131,10 @@ public class GameManager : MonoBehaviour
 	{
         bossHealthUI.GetComponent<BossHealthBar>().target = boss;
         bossHealthUI.SetActive(true);
+    }
+
+    public void PlayShotSound()
+    {
+        gunSound.Play();
     }
 }

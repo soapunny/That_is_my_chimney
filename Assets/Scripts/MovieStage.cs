@@ -23,7 +23,6 @@ public class MovieStage : GameStage
     private CinemachineBlendDefinition blendDefinition;
     [SerializeField]
     GameObject Sleigh;
-    GameObject player;
     [SerializeField]
     Transform playerNeck;
     Animator playerAnimator;
