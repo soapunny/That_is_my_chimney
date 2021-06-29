@@ -51,13 +51,17 @@ public class Player : MonoBehaviour
         if (playerInput.fire)    //fire가 true일 경우 발사
         {
             handGun.Fire();
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         }
         if(playerInput.reload)
         {
             handGun.Reload();
         }
+
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position + Vector3.up * 5, Vector3.down, out hitInfo, 10, LayerMask.GetMask("Environment")))
+		{
+            transform.position = hitInfo.point;
+		}
     }
     public void Run()
     {
