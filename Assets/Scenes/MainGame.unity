@@ -23122,13 +23122,13 @@ MonoBehaviour:
   clearRank: 0
   virtualCamera: {fileID: 611171861}
   rankCut:
-  - rank: 4
+  - rank: 5
     inTime: 22
-  - rank: 3
+  - rank: 4
     inTime: 23
-  - rank: 2
+  - rank: 3
     inTime: 24
-  - rank: 1
+  - rank: 2
     inTime: 25
   enemyGroups:
   - enemyDatas:
@@ -54603,13 +54603,13 @@ MonoBehaviour:
   clearRank: 0
   virtualCamera: {fileID: 799321375}
   rankCut:
-  - rank: 4
+  - rank: 5
     inTime: 55
-  - rank: 3
+  - rank: 4
     inTime: 75
-  - rank: 2
+  - rank: 3
     inTime: 85
-  - rank: 1
+  - rank: 2
     inTime: 100
   enemyGroups:
   - enemyDatas:
@@ -55451,13 +55451,13 @@ MonoBehaviour:
   clearRank: 0
   virtualCamera: {fileID: 2145059456}
   rankCut:
-  - rank: 4
+  - rank: 5
     inTime: 10
-  - rank: 3
+  - rank: 4
     inTime: 12
-  - rank: 2
+  - rank: 3
     inTime: 14
-  - rank: 1
+  - rank: 2
     inTime: 18
   enemyGroups:
   - enemyDatas:
@@ -59461,13 +59461,13 @@ MonoBehaviour:
   clearRank: 0
   virtualCamera: {fileID: 1860485803}
   rankCut:
-  - rank: 4
+  - rank: 5
     inTime: 23
-  - rank: 3
+  - rank: 4
     inTime: 27
-  - rank: 2
+  - rank: 3
     inTime: 30
-  - rank: 1
+  - rank: 2
     inTime: 33
   enemyGroups:
   - enemyDatas:
@@ -68478,13 +68478,13 @@ MonoBehaviour:
   clearRank: 0
   virtualCamera: {fileID: 831951663}
   rankCut:
-  - rank: 4
+  - rank: 5
     inTime: 17
-  - rank: 3
+  - rank: 4
     inTime: 20
-  - rank: 2
+  - rank: 3
     inTime: 22
-  - rank: 1
+  - rank: 2
     inTime: 24
   enemyGroups:
   - enemyDatas:
