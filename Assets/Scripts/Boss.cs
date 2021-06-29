@@ -26,7 +26,6 @@ public class Boss : Enemy
     private GameObject stone;
     public GameObject stonePrefab;
     public GameObject handPosition;
-
     public BossState BossState { get => bossState; set => bossState = value; }
 
     //public delegate void OnDeathCallback(Enemy enemy);
@@ -78,8 +77,12 @@ public class Boss : Enemy
         }
         else if(bossState == BossState.JumpingUp && rigidbody.velocity.y <= 0f)
         {
-            bossState = BossState.Falling;
-            animator.SetInteger("JumpState", 2);
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position + Vector3.up * 1, Vector3.down, out hit, 6.4f, LayerMask.GetMask("Environment")))
+             {
+                bossState = BossState.Falling;
+                animator.SetInteger("JumpState", 2);
+             }
         }
 
 
@@ -108,7 +111,7 @@ public class Boss : Enemy
             if (attackTimer <= 0f)
             {
                 animator.SetTrigger("Attack");
-                attackTimer = 5f;
+                bossState = BossState.Attack;
             }
         }
     }
@@ -117,6 +120,7 @@ public class Boss : Enemy
     {
         stone.GetComponent<Stone>().IsThrow(handPosition.transform.position);
         mainCamera.transform.LookAt(stone.transform);
+        attackTimer = 5f;
         //target.GetDamage();
         //EffectManager.Instance.HeartBeat(0.5f);
         //EffectManager.Instance.CreateEffect(EffectType.ShatteredWindow, 1.0f);
