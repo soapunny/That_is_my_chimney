@@ -80,6 +80,7 @@ public class GameStage : MonoBehaviour
         aliveEnemys = new List<Enemy>();
         player = GameObject.Find("SantaClaus");
         virtualCamera.LookAt = transform;
+        player = GameObject.Find("SantaClaus");
         clearTime = 0.0f;
         clearRank = Rank.F;
     }

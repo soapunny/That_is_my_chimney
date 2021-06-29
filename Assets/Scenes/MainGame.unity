@@ -6037,6 +6037,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4576744531937516, guid: 5cfc98c10402c794dab857af17745cb9, type: 3}
   m_PrefabInstance: {fileID: 271132919}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &271744052 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 424666, guid: 1d3c74582f372f747a9a812ceb0ac6cd, type: 3}
+  m_PrefabInstance: {fileID: 456805537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &283241731
 GameObject:
   m_ObjectHideFlags: 0
@@ -9902,7 +9907,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1771974896}
     m_Modifications:
     - target: {fileID: 192118, guid: 1d3c74582f372f747a9a812ceb0ac6cd, type: 3}
       propertyPath: m_Name
@@ -9910,19 +9915,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 424666, guid: 1d3c74582f372f747a9a812ceb0ac6cd, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 424666, guid: 1d3c74582f372f747a9a812ceb0ac6cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.82
+      value: 4.9400005
       objectReference: {fileID: 0}
     - target: {fileID: 424666, guid: 1d3c74582f372f747a9a812ceb0ac6cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.41
+      value: 1.5799999
       objectReference: {fileID: 0}
     - target: {fileID: 424666, guid: 1d3c74582f372f747a9a812ceb0ac6cd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.78
+      value: -0.37000084
       objectReference: {fileID: 0}
     - target: {fileID: 424666, guid: 1d3c74582f372f747a9a812ceb0ac6cd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9934,7 +9939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 424666, guid: 1d3c74582f372f747a9a812ceb0ac6cd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 424666, guid: 1d3c74582f372f747a9a812ceb0ac6cd, type: 3}
       propertyPath: m_LocalRotation.z
@@ -22649,7 +22654,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611171860}
-  m_LocalRotation: {x: -0.008887018, y: -0.39041406, z: -0.0037689104, w: 0.9205888}
+  m_LocalRotation: {x: -0.008887009, y: -0.39041403, z: -0.003768906, w: 0.9205888}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -45586,7 +45591,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368568500}
-  m_LocalRotation: {x: 0.097116835, y: 0.8593386, z: -0.17771876, w: 0.4695973}
+  m_LocalRotation: {x: 0.097116835, y: 0.8593386, z: -0.17771876, w: 0.46959734}
   m_LocalPosition: {x: 1.85, y: 6.38, z: 4.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -58801,6 +58806,7 @@ Transform:
   - {fileID: 569174548}
   - {fileID: 750944681}
   - {fileID: 286389333}
+  - {fileID: 271744052}
   m_Father: {fileID: 604270332}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60991,8 +60997,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860485802}
-  m_LocalRotation: {x: 0.108694844, y: -0.026494578, z: 0.0028980295, w: 0.99371785}
-  m_LocalPosition: {x: 25.576, y: 1.722, z: -31.453}
+  m_LocalRotation: {x: 0.048947863, y: -0.039965555, z: 0.00196015, w: 0.99799955}
+  m_LocalPosition: {x: 25.576, y: 0.54, z: -32.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1354271466}
@@ -78075,7 +78081,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145059455}
-  m_LocalRotation: {x: 0.0057538887, y: 0.9185518, z: 0.013379268, w: -0.3950324}
+  m_LocalRotation: {x: 0.0057538887, y: 0.9185518, z: 0.013379269, w: -0.39503238}
   m_LocalPosition: {x: 36.36855, y: 0.5, z: -52.311157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
