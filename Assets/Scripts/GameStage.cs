@@ -107,7 +107,7 @@ public class GameStage : MonoBehaviour
                         dollyCart.enabled = true;
                         virtualCamera.Priority = 0;
                         //virtualCamera.gameObject.SetActive(false);
-                        player.SetActive(true);
+                        //player.SetActive(true);
 
                         GameManager.gameManager.currStage = null;
                         isStart = false;
@@ -193,7 +193,7 @@ public class GameStage : MonoBehaviour
             //cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             //cinemachineBrain.ActiveVirtualCamera.Follow = null;
             virtualCamera.Priority = 20;
-            player.SetActive(false);
+            //player.SetActive(false);
             Debug.Log(virtualCamera.name);
             readyEnemyGroups = new Queue<EnemyGroup>(enemyGroups);
             isStart = NextEnemyGroup();
