@@ -90,7 +90,10 @@ public class Stone : MonoBehaviour, IHitable
             target.GetDamage();
             stoneDurability = 0;
             isMove = false;
+            EffectManager.Instance.HeartBeat(1.0f);
+            EffectManager.Instance.CreateEffect(EffectType.BreakWindow, 1.0f);
             Destroyed();
+
         }
     }
 

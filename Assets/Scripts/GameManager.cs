@@ -137,4 +137,10 @@ public class GameManager : MonoBehaviour
     {
         gunSound.Play();
     }
+
+    public void SetVictory()
+    {
+        victory.SetActive(true);
+        bossHealthUI.SetActive(false);
+    }
 }
