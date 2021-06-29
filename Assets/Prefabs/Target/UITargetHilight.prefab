@@ -89,12 +89,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f586c39ff033aa49a170dea7da792b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outerCircle: {fileID: 2447328758599538290}
-  innerCircle: {fileID: 2447328759989779962}
+  outerCircle: {fileID: 0}
+  innerCircle: {fileID: 0}
   fromOuterColor: {r: 0, g: 0.6901961, b: 0.39607844, a: 1}
   toOuterColor: {r: 0.6431373, g: 0, b: 0, a: 1}
   fromInnerColor: {r: 0.3443396, g: 1, b: 0.35852048, a: 1}
   toInnerColor: {r: 1, g: 0.3726415, b: 0.3726415, a: 1}
+  limitTime: 2
 --- !u!1 &2447328759989779960
 GameObject:
   m_ObjectHideFlags: 0

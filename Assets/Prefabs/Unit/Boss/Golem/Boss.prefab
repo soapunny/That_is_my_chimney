@@ -208,13 +208,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'Hips'\n\tTransform 'Lower_Arm_L'\n\tTransform
-    'Upper_Arm_R'\n\tTransform 'Lower_Reg_R'\n\tTransform 'Lower_Leg_L'\n\tTransform
-    'Foot_R'\n\tTransform 'Head'\n\tTransform 'Spine'\n\tTransform 'Upper_Leg_L'\n\tTransform
-    'Lower_Arm_R'\n\tand more ...\n\tFrom animation clip 'RockMode'\n\tFrom animation
-    clip 'JumpingUp'\n\tFrom animation clip 'Falling'\n\tFrom animation clip 'Roaring'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -287,7 +281,7 @@ MonoBehaviour:
   attackSpeed: 1
   destPosition: {x: 5, y: 1, z: 10}
   hp: 20
-  highlight: {fileID: 5385722846397964077, guid: 726b8094e982c9648be88d4efedb85a7, type: 3}
+  highlight: {fileID: 2447328758599538284, guid: 7761ce66ce0d91e4e98843f213bce7b3, type: 3}
   target: {fileID: 0}
   stonePrefab: {fileID: 1094290301253433077, guid: f3cc05f3bef7e73429f3ca93e2d1b40e, type: 3}
   handPosition: {fileID: 8501588790354035849}
