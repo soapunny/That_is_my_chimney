@@ -104,7 +104,8 @@ MonoBehaviour:
   attackSpeed: 3
   destPosition: {x: 0, y: 0, z: 0}
   hp: 1
-  highlight: {fileID: 5385722846397964077, guid: 726b8094e982c9648be88d4efedb85a7, type: 3}
+  highlight: {fileID: 1400385986104973840}
+  target: {fileID: 0}
 --- !u!195 &5213468217654391107
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1571,3 +1572,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5385722846397964067, guid: 726b8094e982c9648be88d4efedb85a7, type: 3}
   m_PrefabInstance: {fileID: 6472453070230471997}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1400385986104973840 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5385722846397964077, guid: 726b8094e982c9648be88d4efedb85a7, type: 3}
+  m_PrefabInstance: {fileID: 6472453070230471997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f586c39ff033aa49a170dea7da792b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

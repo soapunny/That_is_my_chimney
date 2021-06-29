@@ -32,29 +32,8 @@ public class UIStageScore : MonoBehaviour
     {
         stageLabel.text = stage.name;
         float time = PlayerPrefs.GetFloat(stage.name + "_BestTime");
-        float lastSpawn = PlayerPrefs.GetFloat(stage.name + "_LastSpawn");
-        Debug.Log(time + " / " + lastSpawn);
-        if (time < lastSpawn + 0.5f)
-        {
-            bestRank.text = "SS";
-        }
-        else if (time < lastSpawn + 1.0f)
-        {
-            bestRank.text = "S";
-        }
-        else if (time < lastSpawn + 2.0f)
-        {
-            bestRank.text = "A";
-        }
-        else if (time < lastSpawn + 3.0f)
-        {
-            bestRank.text = "B";
-        }
-        else
-        {
-            bestRank.text = "F";
-        }
         bestTime.text = time.ToString("F2");
+        bestRank.text = PlayerPrefs.GetString(stage.name + "_BestRank");
         state = State.Start;
         StartCoroutine(StageScoreView());
 
@@ -118,32 +97,30 @@ public class UIStageScore : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         // rank
-        float lastSpawn = stage.lastSpawnTime;
         int rank = 0;
-        if (time < lastSpawn + 0.5f)
-        {
-            clearRank.text = "SS";
-            rank = 500;
-        }
-        else if (time < lastSpawn + 1.0f)
-        {
-            clearRank.text = "S";
-            rank = 400;
-        }
-        else if (time < lastSpawn + 2.0f)
-        {
-            clearRank.text = "A";
-            rank = 300;
-        }
-        else if (time < lastSpawn + 3.0f)
-        {
-            clearRank.text = "B";
-            rank = 200;
-        }
-        else
-        {
-            clearRank.text = "F";
-            rank = 100;
+        switch (stage.clearRank)
+		{
+            case Rank.SS:
+                clearRank.text = "SS";
+                rank = 500;
+                break;
+            case Rank.S:
+                clearRank.text = "S";
+                rank = 400;
+                break;
+            case Rank.A:
+                clearRank.text = "A";
+                rank = 300;
+                break;
+            case Rank.B:
+                clearRank.text = "B";
+                rank = 200;
+                break;
+            case Rank.F:
+            default:
+                clearRank.text = "F";
+                rank = 100;
+                break;
         }
         clearRank.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.2f);
@@ -156,11 +133,11 @@ public class UIStageScore : MonoBehaviour
 
         // BestTime Update
         totalScore = stage.score * rank;
-        if (totalScore > PlayerPrefs.GetFloat(stage.name + "_TotalScore"))
+        if (!PlayerPrefs.HasKey(stage.name + "_BestTime") || stage.clearTime < PlayerPrefs.GetFloat(stage.name + "_BestTime"))
         {
             PlayerPrefs.SetFloat(stage.name + "_TotalScore", totalScore);
             PlayerPrefs.SetFloat(stage.name + "_BestTime", stage.clearTime);
-            PlayerPrefs.SetFloat(stage.name + "_LastSpawn", stage.lastSpawnTime);
+            PlayerPrefs.SetString(stage.name + "_BestRank", stage.clearRank.ToString());
 
             bestTime.text = clearTime.text;
             bestRank.text = clearRank.text;

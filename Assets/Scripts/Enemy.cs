@@ -52,7 +52,6 @@ public class Enemy : MonoBehaviour, IHitable
         animator = GetComponent<Animator>();
         //rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
-        attackTimer = 1.0f;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         collider = GetComponent<CapsuleCollider>();
     }
@@ -61,11 +60,11 @@ public class Enemy : MonoBehaviour, IHitable
     {
         if (state == EnemyState.Move || state == EnemyState.MoveSit)
 		{
-            Debug.LogWarning("ÀÌµ¿ ==> " + destPosition);
             nav.SetDestination(destPosition);
         }
-        highlight.gameObject.SetActive(true);
+        attackTimer = attackSpeed;
         highlight.limitTime = attackSpeed;
+        highlight.gameObject.SetActive(true);
         collider.enabled = true;
     }
 
@@ -81,7 +80,7 @@ public class Enemy : MonoBehaviour, IHitable
                 state = EnemyState.Idle;
 			}
             animator.SetTrigger("Attack");
-            attackTimer = 1f;
+            attackTimer = attackSpeed;
         }
 
         animator.SetFloat("MoveSpeed", nav.velocity.magnitude);
@@ -90,7 +89,7 @@ public class Enemy : MonoBehaviour, IHitable
 
         if (state == EnemyState.Idle || state == EnemyState.Sit)
 		{
-            attackTimer -= Time.deltaTime * attackSpeed;
+            attackTimer -= Time.deltaTime;
 		}
 
         if (state != EnemyState.Idle && nav.remainingDistance < 0.01f)
@@ -99,6 +98,7 @@ public class Enemy : MonoBehaviour, IHitable
             state = EnemyState.Idle;
             Vector3 dir = (Camera.main.transform.position - transform.position).normalized;
             nav.SetDestination(transform.position + dir * 0.1f);
+            highlight.isOn = true;
             //animator.SetBool("FinishMove", true);
             //rigidBody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
         }
