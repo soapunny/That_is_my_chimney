@@ -46,6 +46,8 @@ public class GameStage : MonoBehaviour
     [SerializeField]
     protected CinemachineDollyCart bossDolly;
 
+    protected GameObject player;
+
     protected float eventTimer;
     protected private bool isStart;
 
@@ -61,6 +63,7 @@ public class GameStage : MonoBehaviour
         virtualCamera.LookAt = transform;
         clearTime = 0.0f;
         lastSpawnTime = GetLastSpawnTime();
+        player = GameObject.Find("SantaClaus");
     }
 
     // Update is called once per frame
@@ -88,6 +91,7 @@ public class GameStage : MonoBehaviour
                         virtualCamera.Priority = 0;
                         Debug.Log(virtualCamera.name);
                         //virtualCamera.gameObject.SetActive(false);
+                        player.SetActive(true);
 
                         GameManager.gameManager.currStage = null;
                         isStart = false;
@@ -164,6 +168,7 @@ public class GameStage : MonoBehaviour
             //cinemachineBrain.ActiveVirtualCamera.LookAt = transform;
             //cinemachineBrain.ActiveVirtualCamera.Follow = null;
             virtualCamera.Priority = 20;
+            player.SetActive(false);
             Debug.Log(virtualCamera.name);
             readyEnemyGroups = new Queue<EnemyGroup>(enemyGroups);
             isStart = NextEnemyGroup();
