@@ -5147,8 +5147,8 @@ MonoBehaviour:
   clearRank: 0
   virtualCamera: {fileID: 649851377}
   rankCut:
-  - rank: 0
-    inTime: 0
+  - rank: 4
+    inTime: 999
   enemyGroups: []
   bossDolly: {fileID: 954161299}
   virtualCamera2: {fileID: 1368568501}
@@ -23821,7 +23821,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649851376}
-  m_LocalRotation: {x: 0.4760711, y: 0.21318924, z: -0.12015712, w: 0.84467095}
+  m_LocalRotation: {x: 0.47607106, y: 0.21318921, z: -0.120157115, w: 0.84467095}
   m_LocalPosition: {x: 14.13, y: 2.29, z: -6.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -28800,7 +28800,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831951662}
-  m_LocalRotation: {x: 0.045589525, y: -0.68334603, z: 0.042827863, w: 0.7274102}
+  m_LocalRotation: {x: 0.0455895, y: -0.68334603, z: 0.04282784, w: 0.7274102}
   m_LocalPosition: {x: 18.359955, y: 1.79, z: -50.655273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -34324,7 +34324,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068385079}
-  m_LocalRotation: {x: 0.038840495, y: 0.85573375, z: -0.06493476, w: 0.51185423}
+  m_LocalRotation: {x: 0.038840503, y: 0.8557337, z: -0.06493474, w: 0.5118543}
   m_LocalPosition: {x: 8.58, y: 0.79, z: -1.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -45661,7 +45661,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368568500}
-  m_LocalRotation: {x: 0.09711684, y: 0.8593385, z: -0.17771876, w: 0.46959734}
+  m_LocalRotation: {x: 0.097116835, y: 0.8593386, z: -0.17771876, w: 0.4695973}
   m_LocalPosition: {x: 1.85, y: 6.38, z: 4.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -53975,7 +53975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1532813549
 Transform:
   m_ObjectHideFlags: 0
@@ -54040,8 +54040,14 @@ MonoBehaviour:
   clearRank: 0
   virtualCamera: {fileID: 799321375}
   rankCut:
-  - rank: 0
-    inTime: 0
+  - rank: 4
+    inTime: 55
+  - rank: 3
+    inTime: 75
+  - rank: 2
+    inTime: 85
+  - rank: 1
+    inTime: 100
   enemyGroups:
   - enemyDatas:
     - spawnTime: 0.1
@@ -54051,13 +54057,6 @@ MonoBehaviour:
       spawnPoint: {x: 3, y: -0.4983418, z: 15}
       movePoint: {x: 0, y: 0, z: 0}
       attackSpeed: 2
-    - spawnTime: 20
-      enemyId: 1
-      enemyObj: {fileID: 963136673372609166, guid: b279994699a707c4ea83ce1c8d727039, type: 3}
-      initState: 0
-      spawnPoint: {x: 0, y: -0.4983418, z: 8}
-      movePoint: {x: 6.19, y: 0.82, z: 4.2}
-      attackSpeed: 1
   bossDolly: {fileID: 954161299}
 --- !u!65 &1532813552
 BoxCollider:
@@ -58861,7 +58860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1771974896
 Transform:
   m_ObjectHideFlags: 0
@@ -58898,8 +58897,14 @@ MonoBehaviour:
   clearRank: 0
   virtualCamera: {fileID: 1860485803}
   rankCut:
-  - rank: 0
-    inTime: 0
+  - rank: 4
+    inTime: 23
+  - rank: 3
+    inTime: 27
+  - rank: 2
+    inTime: 30
+  - rank: 1
+    inTime: 33
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.5
