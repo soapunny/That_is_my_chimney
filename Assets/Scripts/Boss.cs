@@ -150,6 +150,7 @@ public class Boss : Enemy
         bossState = BossState.Idle;
         highlight.gameObject.SetActive(true);
         highlight.TargetOn = true;
+        GameManager.gameManager.ViewBossHealth(this);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -169,6 +170,7 @@ public class Boss : Enemy
 
     void Release()
     {
+        GameManager.gameManager.SetVictory();
         gameObject.SetActive(false);
         EffectManager.Instance.CreateEffect(EffectType.NinjaDisappear, 1.5f, transform.position);
         ObjectPool.Instance.ReleaseObject(enemyId, gameObject);

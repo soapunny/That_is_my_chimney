@@ -284,6 +284,7 @@ MonoBehaviour:
   attackSpeed: 1
   destPosition: {x: 0, y: 0, z: 0}
   hp: 1
+  maxHp: 1
   highlight: {fileID: 5179229555849026771}
   target: {fileID: 0}
 --- !u!136 &7399578012477513273

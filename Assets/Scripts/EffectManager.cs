@@ -9,7 +9,8 @@ public enum EffectType
 {
     ShatteredWindow,
     NinjaDisappear,
-    HitEffect
+    HitEffect,
+    BreakWindow
 }
 
 public enum PostEffectType
@@ -153,6 +154,12 @@ public class EffectManager : MonoBehaviour
                 obj = Instantiate(effectPrefabs[2], position, Quaternion.identity);
                 Destroy(obj, lifeTime);
                 break;
+            case EffectType.BreakWindow:
+                obj = Instantiate(effectPrefabs[3], UICamera.Instance.transform);
+                obj.transform.localPosition = new Vector3(Random.Range(-0.4f, 0.4f), Random.Range(-0.1f, 0.1f), Random.Range(0.5f, 1.0f));
+                Destroy(obj, lifeTime);
+                break;
+
         }
     }
 }
