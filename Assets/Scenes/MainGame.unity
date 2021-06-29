@@ -5145,6 +5145,7 @@ MonoBehaviour:
   score: 0
   clearTime: 0
   virtualCamera: {fileID: 649851377}
+  rankCut: []
   enemyGroups: []
   bossDolly: {fileID: 954161299}
   lastSpawnTime: 0
@@ -7442,7 +7443,7 @@ MonoBehaviour:
   m_UpdateMethod: 0
   m_PositionUnits: 1
   m_Speed: 7
-  m_Position: 0
+  m_Position: 85.55
 --- !u!4 &347622131
 Transform:
   m_ObjectHideFlags: 0
@@ -7450,8 +7451,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347622127}
-  m_LocalRotation: {x: -0.00026174955, y: 0.94148546, z: -0.00073114206, w: -0.33705273}
-  m_LocalPosition: {x: 53.23, y: 2, z: -40.23}
+  m_LocalRotation: {x: -0.0063761245, y: -0.6610148, z: -0.005617185, w: 0.7503247}
+  m_LocalPosition: {x: 23.195358, y: 0.05441733, z: -20.932995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 389391388}
@@ -22408,7 +22409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611171860}
-  m_LocalRotation: {x: -0.008887024, y: -0.39041403, z: -0.003768913, w: 0.92058885}
+  m_LocalRotation: {x: -0.008887004, y: -0.39041403, z: -0.0037689046, w: 0.92058885}
   m_LocalPosition: {x: 11.209988, y: 0.5, z: -20.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -22715,7 +22716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &627206159
 Transform:
   m_ObjectHideFlags: 0
@@ -22746,38 +22747,82 @@ MonoBehaviour:
   score: 0
   clearTime: 0
   virtualCamera: {fileID: 611171861}
+  rankCut:
+  - rank: 0
+    inTime: 22
+  - rank: 1
+    inTime: 23
+  - rank: 2
+    inTime: 24
+  - rank: 3
+    inTime: 25
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.3
       enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 3
-      spawnPoint: {x: -0.2302621, y: -0.750494, z: -22.29382}
+      spawnPoint: {x: -0.4641504, y: -0.7023687, z: -23.81753}
       movePoint: {x: 0, y: 0, z: 0}
-      attackSpeed: 1.5
+      attackSpeed: 2
     - spawnTime: 3
       enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 1
       spawnPoint: {x: -2.627394, y: -0.7351198, z: -14.83}
-      movePoint: {x: -2.411874, y: -0.7336626, z: -20.08903}
-      attackSpeed: 1.5
+      movePoint: {x: -1.206073, y: -0.7425985, z: -21.23525}
+      attackSpeed: 2
+    - spawnTime: 4
+      enemyId: 0
+      enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
+      initState: 1
+      spawnPoint: {x: -2.627394, y: -0.7351198, z: -14.83}
+      movePoint: {x: -0.5396278, y: -0.7296257, z: -22.66428}
+      attackSpeed: 2
   - enemyDatas:
     - spawnTime: 0.5
       enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 3
-      spawnPoint: {x: 11.45597, y: -0.338531, z: -8.367465}
+      spawnPoint: {x: 8.88, y: -0.338531, z: -8.367465}
       movePoint: {x: 0, y: 0, z: 0}
       attackSpeed: 2
+    - spawnTime: 2
+      enemyId: 0
+      enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
+      initState: 2
+      spawnPoint: {x: -2.036624, y: 2.69649, z: -14.58496}
+      movePoint: {x: -0.1660037, y: 3.895052, z: -13.91933}
+      attackSpeed: 2
+    - spawnTime: 2.5
+      enemyId: 0
+      enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
+      initState: 2
+      spawnPoint: {x: -1.80795, y: 2.849863, z: -14.50023}
+      movePoint: {x: -0.3071213, y: 3.760293, z: -17.28843}
+      attackSpeed: 2
   - enemyDatas:
+    - spawnTime: 1
+      enemyId: 0
+      enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
+      initState: 1
+      spawnPoint: {x: -0.946092, y: -0.5848622, z: -17.22142}
+      movePoint: {x: 5.380536, y: -0.7095747, z: -14.91292}
+      attackSpeed: 2
+    - spawnTime: 2
+      enemyId: 0
+      enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
+      initState: 3
+      spawnPoint: {x: 8.948693, y: -0.4538623, z: -6.41585}
+      movePoint: {x: 0, y: 0, z: 0}
+      attackSpeed: 2
     - spawnTime: 3
       enemyId: 0
       enemyObj: {fileID: 109172321315190402, guid: 50c549939b9529d49b9eae59fc1d0fd3, type: 3}
       initState: 3
       spawnPoint: {x: 4.310041, y: -1.002455, z: -10.02584}
       movePoint: {x: 0, y: 0, z: 0}
-      attackSpeed: 3
+      attackSpeed: 2
   bossDolly: {fileID: 954161299}
   lastSpawnTime: 0
 --- !u!65 &627206161
@@ -23536,7 +23581,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649851376}
-  m_LocalRotation: {x: 0.4760711, y: 0.21318921, z: -0.120157115, w: 0.84467095}
+  m_LocalRotation: {x: 0.4760711, y: 0.21318924, z: -0.12015712, w: 0.84467095}
   m_LocalPosition: {x: 14.13, y: 2.29, z: -6.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -27212,7 +27257,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799321374}
-  m_LocalRotation: {x: 0.008882637, y: 0.8890331, z: -0.017263705, w: 0.4574312}
+  m_LocalRotation: {x: 0.023962548, y: 0.90357393, z: -0.050980173, w: 0.42471278}
   m_LocalPosition: {x: 4.26024, y: 2.8382998, z: -5.2409196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -28510,7 +28555,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831951662}
-  m_LocalRotation: {x: 0.045589525, y: -0.68334603, z: 0.042827863, w: 0.7274102}
+  m_LocalRotation: {x: 0.0455895, y: -0.68334603, z: 0.04282784, w: 0.7274102}
   m_LocalPosition: {x: 18.359955, y: 1.79, z: -50.655273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -28999,17 +29044,17 @@ MonoBehaviour:
     width: 0.55
   m_Looped: 0
   m_Waypoints:
-  - position: {x: 0, y: 1.5, z: 0}
+  - position: {x: 0, y: 0.5, z: 0}
     roll: 0
-  - position: {x: 9.98599, y: 1.5, z: -0.8057396}
+  - position: {x: 9.98599, y: 0.5, z: -0.8057396}
     roll: 0
-  - position: {x: 18.823957, y: 1.5, z: -4.7576423}
+  - position: {x: 18.823957, y: 0.5, z: -4.7576423}
     roll: 0
-  - position: {x: 32.512383, y: 1.5, z: -7.1082516}
+  - position: {x: 32.512383, y: 0.5, z: -7.1082516}
     roll: 0
-  - position: {x: 31.72272, y: 2, z: -20.080591}
+  - position: {x: 31.72272, y: 1, z: -20.080591}
     roll: 0
-  - position: {x: 20.187418, y: 1.5, z: -19.203451}
+  - position: {x: 20.187418, y: 0.5, z: -19.203451}
     roll: 0
   - position: {x: 12.420411, y: 1.8233385, z: -22.611738}
     roll: 0
@@ -29039,7 +29084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862097904}
   m_LocalRotation: {x: -0, y: 0.912406, z: -0, w: 0.40928623}
-  m_LocalPosition: {x: 53.23, y: 0.5, z: -40.23}
+  m_LocalPosition: {x: 53.23, y: 0, z: -40.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -32095,6 +32140,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4580847645174538, guid: 1d9a2c0f638159f4bac49271089a6286, type: 3}
   m_PrefabInstance: {fileID: 971410691}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &974653419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 974653420}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &974653420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974653419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.3805356, y: -0.7095747, z: -14.912919}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &975723440
 GameObject:
   m_ObjectHideFlags: 0
@@ -32512,8 +32587,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999374177}
-  m_LocalRotation: {x: -6.9135184e-16, y: 0.94148535, z: -1.9311373e-15, w: -0.33705404}
-  m_LocalPosition: {x: 53.864662, y: 2, z: -39.45721}
+  m_LocalRotation: {x: 3.847728e-16, y: -0.66103905, z: 3.3897425e-16, w: 0.7503515}
+  m_LocalPosition: {x: 24.187382, y: 0.05441733, z: -21.05905}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1156845314}
@@ -34034,7 +34109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068385079}
-  m_LocalRotation: {x: 0.038840495, y: 0.85573375, z: -0.06493476, w: 0.51185423}
+  m_LocalRotation: {x: 0.038840503, y: 0.8557337, z: -0.06493474, w: 0.5118543}
   m_LocalPosition: {x: 8.58, y: 0.79, z: -1.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -46507,8 +46582,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399670537}
-  m_LocalRotation: {x: -6.9135184e-16, y: 0.94148535, z: -1.9311373e-15, w: -0.33705404}
-  m_LocalPosition: {x: 53.864662, y: 2, z: -39.45721}
+  m_LocalRotation: {x: 3.847728e-16, y: -0.66103905, z: 3.3897425e-16, w: 0.7503515}
+  m_LocalPosition: {x: 24.187382, y: 0.05441733, z: -21.05905}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 19469409}
@@ -53598,7 +53673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1532813549
 Transform:
   m_ObjectHideFlags: 0
@@ -53661,6 +53736,7 @@ MonoBehaviour:
   score: 0
   clearTime: 0
   virtualCamera: {fileID: 799321375}
+  rankCut: []
   enemyGroups:
   - enemyDatas:
     - spawnTime: 0.1
@@ -54502,6 +54578,7 @@ MonoBehaviour:
   score: 0
   clearTime: 0
   virtualCamera: {fileID: 2145059456}
+  rankCut: []
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.3
@@ -58484,6 +58561,7 @@ MonoBehaviour:
   score: 0
   clearTime: 3
   virtualCamera: {fileID: 1860485803}
+  rankCut: []
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.5
@@ -60624,7 +60702,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860485802}
-  m_LocalRotation: {x: 0.17352913, y: -0.065414, z: 0.011552407, w: 0.98258597}
+  m_LocalRotation: {x: 0.17352916, y: -0.065414, z: 0.011552409, w: 0.98258597}
   m_LocalPosition: {x: 25.576, y: 1.722, z: -31.453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -67487,6 +67565,7 @@ MonoBehaviour:
   score: 0
   clearTime: 0
   virtualCamera: {fileID: 831951663}
+  rankCut: []
   enemyGroups:
   - enemyDatas:
     - spawnTime: 1.3

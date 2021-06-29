@@ -17,6 +17,7 @@ public class TargetHighlight : MonoBehaviour
 
     float elapsedTime;
     public float limitTime;
+    public bool isOn;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -24,6 +25,7 @@ public class TargetHighlight : MonoBehaviour
         elapsedTime = 0f;
         outerCircle.color = fromOuterColor;
         innerCircle.color = fromInnerColor;
+        isOn = false;
     }
 
     // Update is called once per frame
@@ -34,6 +36,6 @@ public class TargetHighlight : MonoBehaviour
         outerCircle.color = Color.Lerp(fromOuterColor, toOuterColor, elapsedTime / limitTime);
         innerCircle.color = Color.Lerp(fromInnerColor, toInnerColor, elapsedTime / limitTime);
         innerCircle.transform.Rotate(new Vector3(0.0f, 0.0f, 360 * Time.deltaTime));
-        elapsedTime += Time.deltaTime;
+        if (isOn) elapsedTime += Time.deltaTime;
     }
 }

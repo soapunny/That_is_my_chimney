@@ -23,6 +23,22 @@ public struct EnemyGroup
     public List<EnemyData> enemyDatas;
 }
 
+public enum Rank
+{
+    F,
+    B,
+    A,
+    S,
+    SS
+}
+
+[Serializable]
+public struct RankTime
+{
+    public Rank rank;
+    public float inTime;
+}
+
 [RequireComponent(typeof(BoxCollider))]
 public class GameStage : MonoBehaviour
 {
@@ -30,12 +46,16 @@ public class GameStage : MonoBehaviour
     public string name;
     public int score;
     public float clearTime;
+    public Rank clearRank;
     [SerializeField]
     protected CinemachineVirtualCamera virtualCamera;
 
     protected Queue<EnemyGroup> readyEnemyGroups;
     protected EnemyGroup currGroup;
     protected List<Enemy> aliveEnemys;
+
+    [SerializeField]
+    public List<RankTime> rankCut;
 
     [Header("Stage Enemys")]
     [SerializeField]
@@ -49,8 +69,6 @@ public class GameStage : MonoBehaviour
     protected float eventTimer;
     protected private bool isStart;
 
-    public float lastSpawnTime;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +78,7 @@ public class GameStage : MonoBehaviour
         aliveEnemys = new List<Enemy>();
         virtualCamera.LookAt = transform;
         clearTime = 0.0f;
-        lastSpawnTime = GetLastSpawnTime();
+        clearRank = Rank.F;
     }
 
     // Update is called once per frame
@@ -86,11 +104,19 @@ public class GameStage : MonoBehaviour
                         // empty wait enemys
                         dollyCart.enabled = true;
                         virtualCamera.Priority = 0;
-                        Debug.Log(virtualCamera.name);
                         //virtualCamera.gameObject.SetActive(false);
 
                         GameManager.gameManager.currStage = null;
                         isStart = false;
+
+                        foreach (var r in rankCut)
+						{
+                            if (clearTime < r.inTime)
+							{
+                                clearRank = r.rank;
+                                break;
+							}
+						}
                     }
                 }
             }
@@ -206,18 +232,5 @@ public class GameStage : MonoBehaviour
     public void GameOver()
     {
         isStart = false;
-    }
-
-    float GetLastSpawnTime()
-    {
-        float time = 0;
-        foreach (var datas in enemyGroups)
-        {
-            foreach (var data in datas.enemyDatas)
-            {
-                time += data.spawnTime;
-            }
-        }
-        return time;
     }
 }

@@ -50,14 +50,12 @@ public class Boss : Enemy
     {
         if (bossState == BossState.Idle)
         {
-            Debug.LogWarning("이동 ==> " + destPosition);
             //nav.SetDestination(destPosition);
         }
         bossState = BossState.RockMode;
         highlight.gameObject.SetActive(true);
         highlight.limitTime = attackSpeed;
         collider.enabled = true;
-        Debug.Log(gameObject.name);
     }
 
     // Update is called once per frame

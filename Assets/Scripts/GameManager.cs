@@ -57,6 +57,11 @@ public class GameManager : MonoBehaviour
             victory.SetActive(true);
         }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
         // Score, Clear Time Text Update
         score = 0;
         elapsedTime = 0;

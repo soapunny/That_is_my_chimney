@@ -36,7 +36,7 @@ public class UIVictory : MonoBehaviour
     {
         GameStage[] stages = GameManager.gameManager.gameStages;
         int height = -220;
-        float totalSpawnTime = 0;
+        float totalRankScore = 0;
         foreach (var stage in stages)
         {
             currScore = Instantiate(scoreUiPrefab, transform).GetComponent<UIStageScore>();
@@ -50,32 +50,30 @@ public class UIVictory : MonoBehaviour
             }
             if (totalScoreUpdate != null) StopCoroutine(totalScoreUpdate);
             totalScoreUpdate = StartCoroutine(TotalScoreUpdate(currScore.totalScore, stage.clearTime));
-            totalSpawnTime += stage.lastSpawnTime;
+            totalRankScore = (int)stage.clearRank;
             yield return new WaitForSeconds(0.3f);
         }
 
         while (isTotalUpdate) yield return null;
 
-        if (maxTime <  + 0.5f)
-        {
-            totalRank.text = "SS";
-        }
-        else if (maxTime < totalSpawnTime + 1.0f)
-        {
-            totalRank.text = "S";
-        }
-        else if (maxTime < totalSpawnTime + 2.0f)
-        {
-            totalRank.text = "A";
-        }
-        else if (maxTime < totalSpawnTime + 3.0f)
-        {
-            totalRank.text = "B";
-        }
-        else
-        {
-            totalRank.text = "F";
-        }
+        switch ((int)(totalRankScore / stages.Length))
+		{
+            case 5:
+                totalRank.text = "SS";
+                break;
+            case 4:
+                totalRank.text = "S";
+                break;
+            case 3:
+                totalRank.text = "A";
+                break;
+            case 2:
+                totalRank.text = "B";
+                break;
+            default:
+                totalRank.text = "F";
+                break;
+		}
         titleBtn.SetActive(true);
         totalRank.gameObject.SetActive(true);
     }

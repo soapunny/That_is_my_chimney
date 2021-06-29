@@ -60,7 +60,6 @@ public class Gun : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(Camera.main.transform.position, (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f)) - Camera.main.transform.position).normalized, out hitInfo, Mathf.Infinity, hitMask))
         {
-            Debug.Log(hitInfo.collider.gameObject.name);
             IHitable hitable = hitInfo.collider.GetComponent<IHitable>();
             if (hitable != null)
             {
