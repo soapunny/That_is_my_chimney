@@ -25,7 +25,7 @@ public struct EnemyGroup
 
 public enum Rank
 {
-    F,
+    F = 1,
     B,
     A,
     S,

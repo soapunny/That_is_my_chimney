@@ -50,7 +50,7 @@ public class UIVictory : MonoBehaviour
             }
             if (totalScoreUpdate != null) StopCoroutine(totalScoreUpdate);
             totalScoreUpdate = StartCoroutine(TotalScoreUpdate(currScore.totalScore, stage.clearTime));
-            totalRankScore = (int)stage.clearRank;
+            totalRankScore += (int)stage.clearRank;
             yield return new WaitForSeconds(0.3f);
         }
 
