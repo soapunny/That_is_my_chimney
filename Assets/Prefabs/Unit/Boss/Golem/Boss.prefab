@@ -282,6 +282,7 @@ MonoBehaviour:
   attackSpeed: 1
   destPosition: {x: 5, y: 1, z: 10}
   hp: 20
+  maxHp: 20
   highlight: {fileID: 2081641903483264555}
   target: {fileID: 0}
   stonePrefab: {fileID: 1094290301253433077, guid: f3cc05f3bef7e73429f3ca93e2d1b40e, type: 3}

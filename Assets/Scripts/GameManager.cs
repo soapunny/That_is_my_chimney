@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     float elapsedTime;
     public GameStage currStage;
     public GameStage[] gameStages;
+    public GameObject bossHealthUI;
 
     [SerializeField]
     GameObject crossHair;
@@ -121,5 +122,11 @@ public class GameManager : MonoBehaviour
     public void ShowReload()
     {
         reLoad.SetActive(true);
+    }
+
+    public void ViewBossHealth(Boss boss)
+	{
+        bossHealthUI.GetComponent<BossHealthBar>().target = boss;
+        bossHealthUI.SetActive(true);
     }
 }

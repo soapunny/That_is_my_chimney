@@ -150,6 +150,7 @@ public class Boss : Enemy
         bossState = BossState.Idle;
         highlight.gameObject.SetActive(true);
         highlight.TargetOn = true;
+        GameManager.gameManager.ViewBossHealth(this);
     }
 
     private void OnCollisionEnter(Collision collision)
