@@ -47,6 +47,8 @@ public class Enemy : MonoBehaviour, IHitable
 
     public EnemyState State { get => state; set => state = value; }
 
+    Coroutine rotateUpdate;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -68,6 +70,7 @@ public class Enemy : MonoBehaviour, IHitable
         highlight.gameObject.SetActive(true);
         highlight.TargetOn = false;
         collider.enabled = true;
+        
     }
 
     // Update is called once per frame
@@ -101,6 +104,7 @@ public class Enemy : MonoBehaviour, IHitable
             Vector3 dir = (Camera.main.transform.position - transform.position).normalized;
             nav.SetDestination(transform.position + dir * 0.1f);
             highlight.TargetOn = true;
+            rotateUpdate = StartCoroutine(RotateEnemy());
             //animator.SetBool("FinishMove", true);
             //rigidBody.MoveRotation(Quaternion.FromToRotation((Camera.main.transform.position - transform.position).normalized, transform.forward));
         }
@@ -127,6 +131,8 @@ public class Enemy : MonoBehaviour, IHitable
         highlight.gameObject.SetActive(false);
         state = EnemyState.Death;
         onDeathCallback(this);
+        if (rotateUpdate != null) StopCoroutine(rotateUpdate);
+        rotateUpdate = null;
         //Destroy(gameObject, 1.0f);
     }
 
@@ -136,4 +142,15 @@ public class Enemy : MonoBehaviour, IHitable
         EffectManager.Instance.CreateEffect(EffectType.NinjaDisappear, 1.5f, transform.position);
         ObjectPool.Instance.ReleaseObject(enemyId, gameObject);
     }
+
+    IEnumerator RotateEnemy()
+	{
+        Vector3 dir;
+        while (true)
+		{
+            dir = (target.transform.position - transform.position).normalized;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime);
+            yield return null;
+		}
+	}
 }
