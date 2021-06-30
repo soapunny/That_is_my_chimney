@@ -68,7 +68,7 @@ public class StageManager : MonoBehaviour
     {
         movingCamara.GetComponent<CinemachineVirtualCamera>().enabled = false;
         movingCamara.GetComponent<CinemachineFreeLook>().enabled = true;
-        player.GetComponent<Player>().Run();
+        player.GetComponent<PlayerController>().Run();
         isStage3 = false;
         dollyCart.enabled = true;
     }
@@ -81,7 +81,7 @@ public class StageManager : MonoBehaviour
             //
             dollyCart.enabled = false;
             isStage3 = true;
-            player.GetComponent<Player>().StopRunning();
+            player.GetComponent<PlayerController>().StopRunning();
             movingCamara.GetComponent<CinemachineVirtualCamera>().enabled = true;
             movingCamara.GetComponent<CinemachineFreeLook>().enabled = false;
         }

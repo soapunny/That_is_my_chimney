@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class StartScreen : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class StartScreen : MonoBehaviour
 
     public void OnClickExitGame()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         
         Application.Quit();
     }

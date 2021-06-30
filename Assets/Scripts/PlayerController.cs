@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using Cinemachine;
 
 
-public class Player : MonoBehaviour
+public class PlayerController: MonoBehaviour
 {
     enum PlayerState
     {

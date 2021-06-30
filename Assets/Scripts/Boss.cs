@@ -40,7 +40,7 @@ public class Boss : Enemy
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         nav.enabled = false;
         initPos = transform.position;
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         collider = GetComponent<CapsuleCollider>();
         dollyCart = GameObject.Find("BossDollyCart");
         dollyCart.SetActive(false);

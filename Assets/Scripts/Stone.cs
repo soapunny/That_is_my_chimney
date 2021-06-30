@@ -18,7 +18,7 @@ public class Stone : MonoBehaviour, IHitable
     public StoneStatus stoneStatus;
     public float moveSpeed;
     public TargetHighlight highlight;
-    public Player target;
+    public PlayerController target;
     private bool isMove;
     private float destroyTimer;
     //private float moveTimer;
@@ -31,7 +31,7 @@ public class Stone : MonoBehaviour, IHitable
         stoneMeshRenderer = GetComponent<MeshRenderer>();
         stoneCollider = GetComponent<MeshCollider>();
         isMove = false;
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         highlight.TargetOn = false;
         //moveTimer = 0.0f;
     }

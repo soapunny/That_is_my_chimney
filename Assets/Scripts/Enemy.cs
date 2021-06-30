@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour, IHitable
     public OnDeathCallback onDeathCallback;
 
     public TargetHighlight highlight;
-    public Player target;
+    public PlayerController target;
 
     protected float attackTimer;
     protected Animator animator;
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour, IHitable
         animator = GetComponent<Animator>();
         //rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         collider = GetComponent<CapsuleCollider>();
     }
 
